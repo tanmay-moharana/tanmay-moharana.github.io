@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 
+  NOTE: 
+  This is a runnable preview. Original asset links (CSS, JS, images) 
+  have been replaced with CDN links and placeholders to make it functional.
+  The code now includes responsive CSS for an optimal mobile experience.
+-->
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <title>Tanmay Moharana - Work|Blog|Life.</title>
+  <meta content="Tanmay Moharana is a Digital Innovation Professional & Co-Founder of Hermit Labs." name="description">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+
+  <!-- CDN CSS Libraries -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.theme.default.min.css">
+
+  <!-- Custom Styles (approximating original CSS) -->
+  <style>
+    /* --- General & Theme --- */
+    body {
+      transition: background-color 0.3s, color 0.3s;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+    body.dark-mode {
+      background-color: #1a1a1a;
+      color: #f5f5f5;
+    }
+    body.dark-mode .navbar-default {
+      background-color: #2c2c2c;
+      border-color: #444;
+    }
+    body.dark-mode .navbar-default .navbar-nav>li>a {
+        color: #f5f5f5;
+    }
+    body.dark-mode .underlined {
+        border-bottom-color: #fff;
+    }
+    body.dark-mode .timeline > li .direction-l,
+    body.dark-mode .timeline > li .direction-r {
+        background: #2c2c2c;
+    }
+    body.dark-mode .form-control {
+        background-color: #333;
+        color: #fff;
+        border-color: #555;
+    }
+    .wh { color: #fff; }
+    body.dark-mode .wh { color: #fff; }
+    body:not(.dark-mode) .wh { color: #333; }
+    body.dark-mode h4, body.dark-mode h5, body.dark-mode p, body.dark-mode li {
+        color: #ddd;
+    }
+    body.dark-mode #intro h3.wh b { color: #fff; }
+    section, #intro, #footer { padding: 60px 0; }
+    .underlined {
+        padding-bottom: 10px;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #333;
+        display: inline-block;
+    }
+    .back-to-top {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        display: none;
+        background: #337ab7;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 50%;
+        z-index: 1000;
+    }
+
+    /* --- Intro Section --- */
+    #intro { text-align: center; background: #337ab7; color: white; padding: 100px 0; }
+    .avatar { border-radius: 50%; width: 150px; height: 150px; border: 5px solid rgba(255,255,255,0.5); object-fit: cover; }
+    #social a { font-size: 24px; margin: 0 10px; color: white; }
+
+    /* --- Timeline --- */
+    .timeline { list-style: none; padding: 20px 0; position: relative; }
+    .timeline:before { top: 0; bottom: 0; position: absolute; content: " "; width: 3px; background-color: #999; left: 50%; margin-left: -1.5px; }
+    .timeline > li { margin-bottom: 20px; position: relative; }
+    .timeline > li:before, .timeline > li:after { content: " "; display: table; }
+    .timeline > li:after { clear: both; }
+    .timeline > li > .direction-l, .timeline > li > .direction-r {
+        width: 46%;
+        float: left;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 15px;
+        position: relative;
+        background: #f9f9f9;
+    }
+    .timeline > li > .direction-r { float: right; }
+    .direction-l > .flag-wrapper, .direction-r > .flag-wrapper { font-weight: bold; }
+    .direction-l > .desc, .direction-r > .desc { margin-top: 10px; }
+
+    /* --- Projects Grid --- */
+    .grid-item { position: relative; min-height: 200px; margin-bottom: 20px; perspective: 1000px; }
+    .grid-item .front, .grid-item .back {
+        position: absolute; width: 100%; height: 100%;
+        backface-visibility: hidden; transition: transform 0.6s;
+        display: flex; flex-direction: column; justify-content: center; align-items: center;
+        border: 1px solid #ddd; border-radius: 8px;
+        text-align: center;
+        padding: 15px;
+    }
+    .grid-item .front { background-color: #555; color: white; z-index: 2; transform: rotateY(0deg); }
+    .grid-item .back { background-color: #f0f0f0; color: #333; transform: rotateY(180deg); }
+    .grid-item:hover .front { transform: rotateY(-180deg); }
+    .grid-item:hover .back { transform: rotateY(0deg); }
+    .grid-item img { max-width: 80%; height: auto; margin-bottom: 10px; }
+
+    /* --- Material Design Toggle Switch --- */
+    .theme-switch-wrapper {
+      display: flex;
+      align-items: center;
+      padding-top: 15px;
+      padding-right: 15px;
+    }
+    .theme-switch-wrapper h5 {
+      margin: 0 10px 0 0;
+    }
+    .material-switch > input[type="checkbox"] {
+      display: none;
+    }
+    .material-switch > label {
+      cursor: pointer;
+      height: 0px;
+      position: relative;
+      width: 40px;
+    }
+    .material-switch > label::before {
+      background: rgb(0, 0, 0);
+      box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+      border-radius: 8px;
+      content: '';
+      height: 16px;
+      margin-top: -8px;
+      position: absolute;
+      opacity: 0.3;
+      transition: all 0.4s ease-in-out;
+      width: 40px;
+    }
+    .material-switch > label::after {
+      background: rgb(255, 255, 255);
+      border-radius: 16px;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+      content: '';
+      height: 24px;
+      left: -4px;
+      margin-top: -8px;
+      position: absolute;
+      top: -4px;
+      transition: all 0.3s ease-in-out;
+      width: 24px;
+    }
+    .material-switch > input[type="checkbox"]:checked + label::before {
+      background: inherit;
+      opacity: 0.5;
+    }
+    .material-switch > input[type="checkbox"]:checked + label::after {
+      background: inherit;
+      left: 20px;
+    }
+    body:not(.dark-mode) .material-switch > label {
+      color: #337ab7;
+    }
+     body.dark-mode .material-switch > label {
+      color: #89cff0; /* A lighter blue for dark mode */
+    }
+    .material-switch > input[type="checkbox"]:checked + label::before {
+      background-color: currentColor;
+    }
+    .material-switch > input[type="checkbox"]:checked + label::after {
+      background-color: currentColor;
+    }
+
+    /* --- SVG Logo Style --- */
+    .navbar-brand {
+        padding: 10px 15px;
+    }
+    .tm-logo {
+        height: 30px;
+        width: auto;
+        transition: fill 0.3s ease;
+    }
+    body:not(.dark-mode) .tm-logo {
+        fill: #777;
+    }
+    body.dark-mode .tm-logo {
+        fill: #f5f5f5;
+    }
+    .navbar-brand:hover .tm-logo {
+        fill: #337ab7;
+    }
+    body.dark-mode .navbar-brand:hover .tm-logo {
+        fill: #fff;
+    }
+
+
+    /* --- RESPONSIVE STYLES --- */
+    @media (max-width: 767px) {
+      /* Adjust padding for smaller screens */
+      section, #intro, #footer {
+        padding: 40px 15px;
+      }
+      #intro {
+        padding-top: 80px; /* Account for navbar */
+      }
+      
+      /* Responsive Typography */
+      h3 { font-size: 1.8em; }
+      h4.underlined { font-size: 1.5em; }
+
+      /* Responsive Timeline */
+      .timeline:before {
+        left: 20px;
+        margin-left: 0;
+      }
+      .timeline > li > .direction-l,
+      .timeline > li > .direction-r {
+        width: 100%;
+        float: none;
+        margin-bottom: 20px;
+        padding-left: 35px; /* Add space for the line */
+      }
+      .timeline > li {
+        padding: 0;
+      }
+
+      /* Center project cards on mobile */
+      .projects .grid-item {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 350px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="back-to-top page-scroll" href="#topnav">
+    <i class="fa fa-arrow-up"></i>
+  </a>
+  <div class="container-fluid">
+    <nav class="navbar navbar-default navbar-fixed-top" id="topnav">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button class="navbar-toggle collapsed" data-target="#navbar-collapse" data-toggle="collapse" type="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand page-scroll" href="#topnav">
+             <svg class="tm-logo" viewBox="0 0 120 50" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 5 H50 M30 5 V45" stroke="currentColor" stroke-width="8" fill="none" stroke-linecap="round"/>
+                <path d="M70 45 V5 L90 25 L110 5 V45" stroke="currentColor" stroke-width="8" fill="none" stroke-linecap="round"/>
+             </svg>
+          </a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a class="page-scroll" href="#about-me">ABOUT ME</a></li>
+            <li><a class="page-scroll" href="#work">WORK</a></li>
+            <li><a class="page-scroll" href="#patents">PATENTS</a></li>
+            <li><a class="page-scroll" href="#research">RESEARCH</a></li>
+            <li><a class="page-scroll" href="#projects">PROJECTS</a></li>
+            <li><a class="page-scroll" href="#resume">RESUME</a></li>
+            <li><a class="page-scroll" href="#contact">CONTACT</a></li>
+            <li>
+              <div class="theme-switch-wrapper">
+                <h5 class="wh">Dark Mode</h5>
+                <div class="material-switch">
+                    <input id="darkSwitch" name="theme" type="checkbox"/>
+                    <label for="darkSwitch"></label>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div id="intro">
+      <div class="col-lg-6 col-lg-offset-3">
+        <img alt="Tanmay Moharana Avatar" class="avatar" id="avatar" src="https://tanmay-moharana.github.io/assets/img/tanmay.jpg">
+        <h3 class="wh">
+          <b>Tanmay Moharana</b>
+        </h3>
+        <h5><a class="typewrite" data-period="2000" data-type='[ "Hi, I am Tanmay.","I am from India.", "I am Creative.", "I Love to Innovate.", "I Love to Develop." ]' style="color: white; text-decoration: none;"></a></h5>
+        <div class="hidden-xs" id="social">
+          <a href="https://www.linkedin.com/in/tanmay-moharana/" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin"></i></a>
+          <a href="https://github.com/tanmay-moharana" target="_blank" rel="noopener noreferrer"><i class="fa fa-github"></i></a>
+          <a href="https://medium.com/@tanmaymoharana" target="_blank" rel="noopener noreferrer"><i class="fa fa-medium"></i></a>
+          <a data-placement="top" data-toggle="tooltip" href="#" role="button" title="Skype Username - tanmay4osme"><i class="fa fa-skype"></i></a>
+          <a href="https://www.facebook.com/tanmay.mailme" target="_blank" rel="noopener noreferrer"><i class="fa fa-facebook"></i></a>
+          <a href="mailto:tanmay.moharana@gmail.com"><i class="fa fa-envelope-o"></i></a>
+        </div>
+        <div class="hidden-sm hidden-md hidden-lg" id="social">
+           <a href="https://www.linkedin.com/in/tanmay-moharana/" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin"></i></a>
+           <a href="https://github.com/tanmay-moharana" target="_blank" rel="noopener noreferrer"><i class="fa fa-github"></i></a>
+           <a href="mailto:tanmay.moharana@gmail.com"><i class="fa fa-envelope-o"></i></a>
+        </div>
+      </div>
+    </div>
+    <div id="about-me" class="row section">
+        <div class="col-lg-8 col-lg-offset-2 text-center">
+            <h4 class="underlined">ABOUT ME</h4>
+            <p>A seasoned digital transformation and product development leader with over eight years of experience successfully guiding cross-functional teams from strategy to execution. My expertise lies in managing the end-to-end product lifecycle to deliver groundbreaking digital solutions and IoT products, specifically tailored to drive efficiency, innovation, and sustainable growth within the demanding manufacturing sector.</p>
+            <p>Beyond my professional life, I'm an avid gamer with a passion for sim racing. I also enjoy coding, playing Badminton, and listening to music.</p>
+        </div>
+    </div>
+    <div id="work" class="row section">
+        <div class="col-lg-8 col-lg-offset-2">
+            <h4 class="underlined text-center">WORK</h4>
+            <ul class="timeline">
+              <li><div class="direction-l"><div class="flag-wrapper"><span class="flag">Bridgestone Mobility Solutions</span><br><span class="time-wrapper"><span class="time">11/2023 – Present</span></span></div><div class="desc">Product Manager – Hardware Platform</div></div></li>
+              <li><div class="direction-r"><div class="flag-wrapper"><span class="flag">KONUX, GmbH</span><br><span class="time-wrapper"><span class="time">09/2021 – 11/2023</span></span></div><div class="desc">Junior Product Manager</div></div></li>
+              <li><div class="direction-l"><div class="flag-wrapper"><span class="flag">Hermit Labs</span><br><span class="time-wrapper"><span class="time">08/2018 – 08/2021</span></span></div><div class="desc">Co-Founder/Chief Product Officer</div></div></li>
+              <li><div class="direction-r"><div class="flag-wrapper"><span class="flag">MotionTag GmbH</span><br><span class="time-wrapper"><span class="time">09/2018 – 12/2018</span></span></div><div class="desc">Data Analyst Intern</div></div></li>
+              <li><div class="direction-l"><div class="flag-wrapper"><span class="flag">The Linde Group</span><br><span class="time-wrapper"><span class="time">04/2017 – 09/2017</span></span></div><div class="desc">Intern- Digital Innovation.</div></div></li>
+              <li><div class="direction-r"><div class="flag-wrapper"><span class="flag">Tega Industries Ltd.</span><br><span class="time-wrapper"><span class="time">07/2011 – 09/2015</span></span></div><div class="desc">Snr.Reseach & Development Engineer.</div></div></li>
+            </ul>
+        </div>
+    </div>
+     <div id="patents" class="row section">
+        <div class="col-lg-8 col-lg-offset-2">
+          <h4 class="underlined text-center">PATENTS</h4>
+           <ol>
+            <li>Vibrating screen panel health monitoring system.<p><i>WO 2014136121 A1</i></p></li>
+            <li>Trommel assembly.<p><i>US 9364864 B2</i></p></li>
+            <li>Snap fit fixing system for screen panels<p><i>US 9327318 B2</i></p></li>
+            <li>Fixing arrangement having multistage contoured snap-fit fixing means for fixing of a screen panel on a support structure.<p><i>WO 2015170334 A1</i></p></li>
+            <li>Trommel assembly having a spiral assembly with decaying pitch<p><i>US 20160129477 A1</i></p></li>
+          </ol>
+        </div>
+      </div>
+     <div id="research" class="row section">
+        <div class="col-lg-8 col-lg-offset-2">
+          <h4 class="underlined text-center">RESEARCH</h4>
+           <ol>
+            <li>Developing a remote data acquisition, production information and visualization system in mineral processing industry based on Internet of Things.<p><i>Proceedings of International Conference on Mineral Processing Technology' MPT2014</i></p></li>
+            <li>A study on usage of Augmented Reality and modern mobile technologies in information management in mining and mineral processing industries.<p><i>Proceedings of International Conference on Mineral Processing Technology' MPT2014</i></p></li>
+            <li>Analyzing screening operation using discrete element method (DEM) and predicting the strength and wear of polyurethane decks using FEM.<p><i>Proceedings of International Conference on Mineral Processing Technology' MPT2014</i></p></li>
+            <li>Design and Optimisation of Polymer screen panel using the hyper elastic, visco-elastic and creep properties of polymer material.<p><i>Proceedings of International Conference on Mineral Processing Technology' MPT2014</i></p></li>
+            <li>Role of renewable energy in building a sustainable mining and mineral processing ecosystem.<p><i>Proceedings of International Conference on Mineral Processing Technology' MPT2017</i></p></li>
+          </ol>
+        </div>
+      </div>
+    <div id="projects" class="row section">
+      <div class="col-xs-12">
+        <h4 class="underlined text-center">PROJECTS</h4>
+        <div class="wow fadeIn">
+          <div class="row">
+            <div class="col-sm-4"><div class="grid-item"><div class="front"><img alt="AR" src="https://placehold.co/100x80/555/fff?text=AR"><h4 class="wh">Remote Support</h4></div><div class="back"><p>AR based remote support project using smart glasses.</p><a class="btn btn-default" href="#" target="_blank">About</a></div></div></div>
+            <div class="col-sm-4"><div class="grid-item"><div class="front"><img alt="AI" src="https://placehold.co/100x80/555/fff?text=AI"><h4 class="wh">Flappy Bird-AI</h4></div><div class="back"><p>AI based flappybird implemented using Python Pygames.</p><a class="btn btn-default" href="#" target="_blank">GitHub</a></div></div></div>
+            <div class="col-sm-4"><div class="grid-item"><div class="front"><img alt="VR" src="https://placehold.co/100x80/555/fff?text=VR"><h4>Project Vision</h4></div><div class="back"><p>A Virtual Reality based classroom experience.</p><a class="btn btn-default" href="#" target="_blank">About</a></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="resume" class="row section">
+        <div class="col-lg-6 col-lg-offset-3 text-center">
+          <h4 class="underlined">RESUME</h4>
+          <p>My resume is available upon request.</p>
+          <a href="#" class="btn btn-primary">Download CV (Placeholder)</a>
+        </div>
+    </div>
+    <div id="contact" class="row section">
+      <div class="col-lg-4 col-lg-offset-4">
+        <h4 class="underlined text-center">CONTACT</h4>
+        <!-- The form now submits to Formsubmit.co -->
+        <form id="contact-form" action="https://formsubmit.co/tanmay.moharana@gmail.com" method="POST">
+          <div class="form-group">
+            <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+          </div>
+          <div class="form-group">
+            <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" id="message" name="message" placeholder="Message" rows="5" required></textarea>
+          </div>
+          <!-- You can customize the thank you page redirection -->
+          <input type="hidden" name="_next" value="#">
+          <!-- You can disable captcha if you want, but it's recommended to keep it -->
+          <input type="hidden" name="_captcha" value="false">
+
+          <button class="btn btn-default btn-block" type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+    <div id="footer" class="row section text-center">
+        <p>Copyright © <span id="year"></span> • Designed with &#10084; by <a href="https://github.com/tanmay-moharana" target="_blank">@tanmay</a></p>
+    </div>
+  </div>
+
+  <!-- CDN JS Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-widget/1.0.1/medium-widget.min.js"></script>
+
+  <!-- Consolidated Page Scripts -->
+  <script>
+    $(document).ready(function() {
+
+      // --- Initialize WOW.js for animations ---
+      new WOW().init();
+
+      // --- Smooth Scrolling for .page-scroll links ---
+      $('a.page-scroll').on('click', function(event) {
+        var $anchor = $(this);
+        $('html, body').stop().animate({
+          scrollTop: $($anchor.attr('href')).offset().top - 50
+        }, 1500, 'easeInOutExpo');
+        event.preventDefault();
+         // Collapse mobile nav after click
+        $('#navbar-collapse').collapse('hide');
+      });
+
+      // --- Back to top button ---
+      $(window).scroll(function() {
+        if ($(this).scrollTop() > 100) {
+          $('.back-to-top').fadeIn('slow');
+        } else {
+          $('.back-to-top').fadeOut('slow');
+        }
+      });
+
+      // --- Typewriter Effect ---
+      const TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+      };
+
+      TxtType.prototype.tick = function() {
+        let i = this.loopNum % this.toRotate.length;
+        let fullTxt = this.toRotate[i];
+        if (this.isDeleting) {
+          this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+          this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+        this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+        let that = this;
+        let delta = 200 - Math.random() * 100;
+        if (this.isDeleting) { delta /= 2; }
+        if (!this.isDeleting && this.txt === fullTxt) {
+          delta = this.period;
+          this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+          this.isDeleting = false;
+          this.loopNum++;
+          delta = 500;
+        }
+        setTimeout(function() { that.tick(); }, delta);
+      };
+
+      const elements = document.getElementsByClassName('typewrite');
+      for (let i = 0; i < elements.length; i++) {
+        const toRotate = elements[i].getAttribute('data-type');
+        const period = elements[i].getAttribute('data-period');
+        if (toRotate) {
+          new TxtType(elements[i], JSON.parse(toRotate), period);
+        }
+      }
+      const css = document.createElement("style");
+      css.type = "text/css";
+      css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff; animation: blink-caret .75s step-end infinite; } @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: white; } }";
+      document.body.appendChild(css);
+
+      // --- Dark Mode Switch ---
+      const darkSwitch = document.getElementById('darkSwitch');
+      const body = document.body;
+
+      function setAndSaveTheme(theme) {
+        if (theme === 'dark') {
+          body.classList.add('dark-mode');
+          darkSwitch.checked = true;
+          localStorage.setItem('theme', 'dark');
+        } else {
+          body.classList.remove('dark-mode');
+          darkSwitch.checked = false;
+          localStorage.setItem('theme', 'light');
+        }
+      }
+
+      if (darkSwitch) {
+        // Add listener for user interaction
+        darkSwitch.addEventListener('change', function() {
+          const newTheme = this.checked ? 'dark' : 'light';
+          setAndSaveTheme(newTheme);
+        });
+
+        // Set initial theme on page load
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        let initialTheme = 'light'; // Default to light
+
+        if (savedTheme) {
+          initialTheme = savedTheme; // Use saved theme
+        } else if (systemPrefersDark) {
+          initialTheme = 'dark'; // Use system preference
+        }
+
+        setAndSaveTheme(initialTheme);
+      }
+
+      // --- Copyright Year ---
+      $('#year').text(new Date().getFullYear());
+
+      // --- Tooltip Initialization ---
+      $('[data-toggle="tooltip"]').tooltip();
+
+    });
+  </script>
+</body>
+</html>
