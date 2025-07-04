@@ -4,7 +4,7 @@
   NOTE: 
   This is a runnable preview. Original asset links (CSS, JS, images) 
   have been replaced with CDN links and placeholders to make it functional.
-  The code now includes responsive CSS for an optimal mobile experience.
+  The code now includes responsive CSS and theme-aware icons for an optimal experience.
 -->
 <head>
   <meta charset="utf-8">
@@ -31,12 +31,26 @@
       background-color: #1a1a1a;
       color: #f5f5f5;
     }
+    /* General link color for dark mode */
+    body.dark-mode a {
+        color: #89cff0;
+    }
+    body.dark-mode a:hover {
+        color: #a9e2ff;
+    }
+    /* Footer link color in dark mode */
+    body.dark-mode #footer a {
+        color: #89cff0;
+    }
     body.dark-mode .navbar-default {
       background-color: #2c2c2c;
       border-color: #444;
     }
     body.dark-mode .navbar-default .navbar-nav>li>a {
         color: #f5f5f5;
+    }
+    body.dark-mode .navbar-default .navbar-toggle .icon-bar {
+        background-color: #f5f5f5;
     }
     body.dark-mode .underlined {
         border-bottom-color: #fff;
@@ -74,12 +88,45 @@
         padding: 10px 15px;
         border-radius: 50%;
         z-index: 1000;
+        transition: background-color 0.3s ease;
+    }
+    /* Back to top button in dark mode */
+    body.dark-mode .back-to-top {
+        background-color: #285e8e;
     }
 
+
     /* --- Intro Section --- */
-    #intro { text-align: center; background: #337ab7; color: white; padding: 100px 0; }
+    #intro { 
+        text-align: center; 
+        background: #337ab7; 
+        color: white; 
+        padding: 100px 0; 
+        transition: background-color 0.3s ease;
+    }
+    /* Intro section in dark mode */
+    body.dark-mode #intro {
+        background-color: #285e8e;
+    }
     .avatar { border-radius: 50%; width: 150px; height: 150px; border: 5px solid rgba(255,255,255,0.5); object-fit: cover; }
-    #social a { font-size: 24px; margin: 0 10px; color: white; }
+    #social a { 
+        font-size: 24px; 
+        margin: 0 10px; 
+        color: white; 
+        transition: color 0.2s ease-in-out;
+    }
+    /* The typewriter link has an inline style, so it remains white. */
+    /* Social icons are white in dark mode for better contrast. */
+    body.dark-mode #social a {
+        color: #f5f5f5;
+    }
+     body.dark-mode #social a:hover {
+        color: #ddd;
+    }
+    #social a:hover {
+        color: #e0e0e0;
+        text-decoration: none;
+    }
 
     /* --- Timeline --- */
     .timeline { list-style: none; padding: 20px 0; position: relative; }
@@ -115,6 +162,19 @@
     .grid-item:hover .front { transform: rotateY(-180deg); }
     .grid-item:hover .back { transform: rotateY(0deg); }
     .grid-item img { max-width: 80%; height: auto; margin-bottom: 10px; }
+    body.dark-mode .grid-item .back {
+        background-color: #424242;
+        color: #f5f5f5;
+    }
+    body.dark-mode .grid-item .back .btn-default {
+        background-color: #555;
+        border-color: #666;
+        color: #f5f5f5;
+    }
+    body.dark-mode .grid-item .back .btn-default:hover {
+        background-color: #666;
+        border-color: #777;
+    }
 
     /* --- Material Design Toggle Switch --- */
     .theme-switch-wrapper {
@@ -181,26 +241,26 @@
       background-color: currentColor;
     }
 
-    /* --- SVG Logo Style --- */
+    /* --- SVG Logo Style (Corrected) --- */
     .navbar-brand {
         padding: 10px 15px;
     }
     .tm-logo {
         height: 30px;
         width: auto;
-        transition: fill 0.3s ease;
+        transition: stroke 0.3s ease; /* Changed from fill */
     }
     body:not(.dark-mode) .tm-logo {
-        fill: #777;
+        stroke: #777; /* Changed from fill */
     }
     body.dark-mode .tm-logo {
-        fill: #f5f5f5;
+        stroke: #f5f5f5; /* Changed from fill */
     }
     .navbar-brand:hover .tm-logo {
-        fill: #337ab7;
+        stroke: #337ab7; /* Changed from fill */
     }
     body.dark-mode .navbar-brand:hover .tm-logo {
-        fill: #fff;
+        stroke: #fff; /* Changed from fill */
     }
 
 
@@ -258,9 +318,10 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand page-scroll" href="#topnav">
+             <!-- Corrected SVG: removed stroke="currentColor" to allow CSS to control it -->
              <svg class="tm-logo" viewBox="0 0 120 50" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10 5 H50 M30 5 V45" stroke="currentColor" stroke-width="8" fill="none" stroke-linecap="round"/>
-                <path d="M70 45 V5 L90 25 L110 5 V45" stroke="currentColor" stroke-width="8" fill="none" stroke-linecap="round"/>
+                <path d="M10 5 H50 M30 5 V45" stroke-width="8" fill="none" stroke-linecap="round"/>
+                <path d="M70 45 V5 L90 25 L110 5 V45" stroke-width="8" fill="none" stroke-linecap="round"/>
              </svg>
           </a>
         </div>
@@ -288,7 +349,7 @@
     </nav>
     <div id="intro">
       <div class="col-lg-6 col-lg-offset-3">
-        <img alt="Tanmay Moharana Avatar" class="avatar" id="avatar" src="images/Tanmay.jpeg">
+        <img alt="Tanmay Moharana Avatar" class="avatar" id="avatar" src="https://placehold.co/150x150/ffffff/000000?text=TM" onerror="this.onerror=null;this.src='https://placehold.co/150x150/337ab7/ffffff?text=TM';">
         <h3 class="wh">
           <b>Tanmay Moharana</b>
         </h3>
@@ -357,9 +418,10 @@
         <h4 class="underlined text-center">PROJECTS</h4>
         <div class="wow fadeIn">
           <div class="row">
-            <div class="col-sm-4"><div class="grid-item"><div class="front"><img alt="AR" src="https://placehold.co/100x80/555/fff?text=AR"><h4 class="wh">Remote Support</h4></div><div class="back"><p>AR based remote support project using smart glasses.</p><a class="btn btn-default" href="#" target="_blank">About</a></div></div></div>
-            <div class="col-sm-4"><div class="grid-item"><div class="front"><img alt="AI" src="https://placehold.co/100x80/555/fff?text=AI"><h4 class="wh">Flappy Bird-AI</h4></div><div class="back"><p>AI based flappybird implemented using Python Pygames.</p><a class="btn btn-default" href="#" target="_blank">GitHub</a></div></div></div>
-            <div class="col-sm-4"><div class="grid-item"><div class="front"><img alt="VR" src="https://placehold.co/100x80/555/fff?text=VR"><h4>Project Vision</h4></div><div class="back"><p>A Virtual Reality based classroom experience.</p><a class="btn btn-default" href="#" target="_blank">About</a></div></div></div>
+            <!-- Updated project items with classes and data attributes for theme switching -->
+            <div class="col-sm-4"><div class="grid-item"><div class="front"><img alt="AR" class="project-icon" src="https://placehold.co/100x80/555/fff?text=AR" data-light-src="https://placehold.co/100x80/555/fff?text=AR" data-dark-src="https://placehold.co/100x80/3a3a3a/f5f5f5?text=AR"><h4 class="wh">Remote Support</h4></div><div class="back"><p>AR based remote support project using smart glasses.</p><a class="btn btn-default" href="#" target="_blank">About</a></div></div></div>
+            <div class="col-sm-4"><div class="grid-item"><div class="front"><img alt="AI" class="project-icon" src="https://placehold.co/100x80/555/fff?text=AI" data-light-src="https://placehold.co/100x80/555/fff?text=AI" data-dark-src="https://placehold.co/100x80/3a3a3a/f5f5f5?text=AI"><h4 class="wh">Flappy Bird-AI</h4></div><div class="back"><p>AI based flappybird implemented using Python Pygames.</p><a class="btn btn-default" href="#" target="_blank">GitHub</a></div></div></div>
+            <div class="col-sm-4"><div class="grid-item"><div class="front"><img alt="VR" class="project-icon" src="https://placehold.co/100x80/555/fff?text=VR" data-light-src="https://placehold.co/100x80/555/fff?text=VR" data-dark-src="https://placehold.co/100x80/3a3a3a/f5f5f5?text=VR"><h4>Project Vision</h4></div><div class="back"><p>A Virtual Reality based classroom experience.</p><a class="btn btn-default" href="#" target="_blank">About</a></div></div></div>
           </div>
         </div>
       </div>
@@ -481,38 +543,46 @@
       css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff; animation: blink-caret .75s step-end infinite; } @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: white; } }";
       document.body.appendChild(css);
 
-      // --- Dark Mode Switch ---
+      // --- Dark Mode Switch (Updated) ---
       const darkSwitch = document.getElementById('darkSwitch');
       const body = document.body;
 
       function setAndSaveTheme(theme) {
+        const projectIcons = document.querySelectorAll('.project-icon');
+        
         if (theme === 'dark') {
           body.classList.add('dark-mode');
           darkSwitch.checked = true;
           localStorage.setItem('theme', 'dark');
+          projectIcons.forEach(icon => {
+              const darkSrc = icon.getAttribute('data-dark-src');
+              if (darkSrc) icon.src = darkSrc;
+          });
         } else {
           body.classList.remove('dark-mode');
           darkSwitch.checked = false;
           localStorage.setItem('theme', 'light');
+          projectIcons.forEach(icon => {
+              const lightSrc = icon.getAttribute('data-light-src');
+              if (lightSrc) icon.src = lightSrc;
+          });
         }
       }
 
       if (darkSwitch) {
-        // Add listener for user interaction
         darkSwitch.addEventListener('change', function() {
           const newTheme = this.checked ? 'dark' : 'light';
           setAndSaveTheme(newTheme);
         });
 
-        // Set initial theme on page load
         const savedTheme = localStorage.getItem('theme');
         const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        let initialTheme = 'light'; // Default to light
+        let initialTheme = 'light';
 
         if (savedTheme) {
-          initialTheme = savedTheme; // Use saved theme
+          initialTheme = savedTheme;
         } else if (systemPrefersDark) {
-          initialTheme = 'dark'; // Use system preference
+          initialTheme = 'dark';
         }
 
         setAndSaveTheme(initialTheme);
