@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "predeploy": "npm run build && echo 'tanmaymoharana.com' > out/CNAME",
-    "deploy": "gh-pages -d out"
+    "deploy": "gh-pages -b main -d out"
   },
   "dependencies": {
     "clsx": "^2.1.1",
