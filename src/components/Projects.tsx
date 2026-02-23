@@ -24,9 +24,9 @@ export default function Projects() {
     ];
 
     return (
-        <section className="min-h-screen bg-[#080808] py-32 px-6 md:px-12 relative z-20">
-            <div className="max-w-7xl mx-auto">
-                <h2 className="text-4xl md:text-5xl font-bold mb-16 text-white text-center">Selected Work</h2>
+        <section className="min-h-screen bg-[#080808] py-20 md:py-32 px-6 md:px-12 relative z-20">
+            <div className="max-w-7xl mx-auto xl:max-w-[1400px]">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 sm:mb-16 text-white text-center">Selected Work</h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {projects.map((project, idx) => (

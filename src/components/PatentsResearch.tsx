@@ -21,8 +21,8 @@ export default function PatentsResearch() {
     ];
 
     return (
-        <section className="bg-[#080808] py-32 px-6 md:px-12 relative z-20 border-t border-white/5">
-            <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+        <section className="bg-[#080808] py-20 md:py-32 px-6 md:px-12 relative z-20 border-t border-white/5">
+            <div className="max-w-7xl mx-auto xl:max-w-[1400px] grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
 
                 {/* Patents Column */}
                 <motion.div
