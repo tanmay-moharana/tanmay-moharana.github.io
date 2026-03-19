@@ -7,13 +7,13 @@ export default function Navigation() {
     const [activeSection, setActiveSection] = useState("hero");
 
     const navItems = [
-        { id: "hero", label: "Home" },
-        { id: "about", label: "About" },
-        { id: "skills", label: "Skills" },
-        { id: "experience", label: "Experience" },
-        { id: "research", label: "Research" },
-        { id: "awards", label: "Awards" },
-        { id: "projects", label: "Work" },
+        { id: "hero", label: "Home", shortLabel: "Home" },
+        { id: "about", label: "About", shortLabel: "About" },
+        { id: "skills", label: "Skills", shortLabel: "Skills" },
+        { id: "experience", label: "Experience", shortLabel: "Exp" },
+        { id: "research", label: "Research", shortLabel: "Res" },
+        { id: "awards", label: "Awards", shortLabel: "Awards" },
+        { id: "projects", label: "Work", shortLabel: "Work" },
     ];
 
     useEffect(() => {
@@ -79,14 +79,14 @@ export default function Navigation() {
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="fixed bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-[100] pointer-events-auto"
+            className="fixed bottom-4 sm:bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-[100] pointer-events-auto w-[calc(100%-2rem)] sm:w-auto max-w-[calc(100%-2rem)]"
         >
-            <nav className="flex items-center gap-1 sm:gap-2 p-1.5 sm:p-2 rounded-full bg-[#080808]/70 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
+            <nav className="flex items-center gap-0.5 sm:gap-1 md:gap-2 p-1 sm:p-1.5 md:p-2 rounded-full bg-[#080808]/70 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)] overflow-x-auto no-scrollbar justify-center">
                 {navItems.map((item) => (
                     <button
                         key={item.id}
                         onClick={() => scrollTo(item.id)}
-                        className={`relative px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-colors ${
+                        className={`relative px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs md:text-sm font-medium transition-colors whitespace-nowrap shrink-0 ${
                             activeSection === item.id ? "text-white" : "text-white/40 hover:text-white/80"
                         }`}
                     >
@@ -97,10 +97,12 @@ export default function Navigation() {
                                 transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                             />
                         )}
-                        <span className="relative z-10">{item.label}</span>
+                        <span className="relative z-10 hidden sm:inline">{item.label}</span>
+                        <span className="relative z-10 sm:hidden">{item.shortLabel}</span>
                     </button>
                 ))}
             </nav>
         </motion.div>
     );
 }
+
