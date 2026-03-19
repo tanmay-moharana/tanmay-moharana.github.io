@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 
+import Image from 'next/image';
+
 export default function Experience() {
     const experiences = [
         {
@@ -9,41 +11,47 @@ export default function Experience() {
             role: "Product Manager – Hardware Platform",
             duration: "11/2023 – Present",
             description: "Managing the end-to-end product lifecycle for hardware platforms in mobility solutions.",
+            logo: "/logos/bridgestone.png"
         },
         {
             company: "KONUX, GmbH",
             role: "Junior Product Manager",
             duration: "09/2021 – 11/2023",
             description: "Guided cross-functional teams from strategy to execution for IoT products in the manufacturing and railway sectors.",
+            logo: "/logos/konux.png"
         },
         {
             company: "Hermit Labs",
             role: "Co-Founder / Chief Product Officer",
             duration: "08/2018 – 08/2021",
             description: "Spearheaded digital solutions tailored to drive efficiency, innovation, and sustainable growth.",
+            logo: "/logos/hermit_optimized.png"
         },
         {
             company: "MotionTag GmbH",
             role: "Data Analyst Intern",
             duration: "09/2018 – 12/2018",
             description: "Analyzed mobility data to improve product algorithms.",
+            logo: "/logos/motiontag.png"
         },
         {
             company: "The Linde Group",
             role: "Intern - Digital Innovation",
             duration: "04/2017 – 09/2017",
             description: "Explored digital transformation strategies and new digital solutions.",
+            logo: "/logos/linde.png"
         },
         {
             company: "Tega Industries Ltd.",
             role: "Snr. Research & Development Engineer",
             duration: "07/2011 – 09/2015",
             description: "Led R&D for mineral processing products and polymer materials.",
+            logo: "/logos/tega.png"
         },
     ];
 
     return (
-        <section className="bg-[#080808] py-20 md:py-32 px-6 md:px-12 relative z-20 border-t border-white/5">
+        <section className="py-24 md:py-32 px-6 md:px-12 relative z-20 border-t border-white/5">
             <div className="max-w-4xl mx-auto">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
@@ -75,8 +83,27 @@ export default function Experience() {
                                 <div className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md group-hover:border-white/20 transition-colors duration-400">
                                     <div className="flex flex-col mb-2">
                                         <span className="text-sm font-medium text-[#a1a1aa] mb-1 tracking-wider">{exp.duration}</span>
-                                        <h3 className="text-xl font-bold text-white leading-tight">{exp.role}</h3>
-                                        <span className="text-white/60 font-medium text-sm mt-1">{exp.company}</span>
+                                        <h3 className="text-xl font-bold text-white leading-tight mb-2">{exp.role}</h3>
+                                        
+                                        {/* Company Name with Logo */}
+                                        <div className="flex items-center gap-2 mt-2 mb-1">
+                                            {exp.logo && (
+                                                <div className="relative w-8 h-8 overflow-hidden rounded-md bg-white/10 flex-shrink-0">
+                                                    <Image 
+                                                        src={exp.logo} 
+                                                        alt={`${exp.company} logo`} 
+                                                        fill 
+                                                        className="object-contain p-0.5" 
+                                                    />
+                                                </div>
+                                            )}
+                                            {!exp.logo && (
+                                                <div className="w-8 h-8 rounded-md bg-white/10 flex-shrink-0 flex items-center justify-center">
+                                                    <span className="text-sm font-bold text-white/50">{exp.company.charAt(0)}</span>
+                                                </div>
+                                            )}
+                                            <span className="text-white/80 font-medium text-base ml-1">{exp.company}</span>
+                                        </div>
                                     </div>
                                     <p className="text-gray-400 text-sm leading-relaxed mt-4">
                                         {exp.description}

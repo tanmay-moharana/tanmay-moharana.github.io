@@ -21,8 +21,8 @@ export default function PatentsResearch() {
     ];
 
     return (
-        <section className="bg-[#080808] py-20 md:py-32 px-6 md:px-12 relative z-20 border-t border-white/5">
-            <div className="max-w-7xl mx-auto xl:max-w-[1400px] grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+        <section className="py-24 md:py-32 px-6 md:px-12 relative z-20 border-t border-white/5">
+            <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
 
                 {/* Patents Column */}
                 <motion.div
@@ -35,7 +35,7 @@ export default function PatentsResearch() {
                         <div className="p-3 bg-white/10 rounded-xl text-white">
                             <Award size={24} />
                         </div>
-                        <h2 className="text-3xl font-bold text-white">Patents</h2>
+                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">Patents</h2>
                     </div>
 
                     <div className="space-y-6">
@@ -68,7 +68,7 @@ export default function PatentsResearch() {
                         <div className="p-3 bg-white/10 rounded-xl text-white">
                             <BookOpen size={24} />
                         </div>
-                        <h2 className="text-3xl font-bold text-white">Research</h2>
+                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">Research</h2>
                     </div>
 
                     <div className="space-y-6">
