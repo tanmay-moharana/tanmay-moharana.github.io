@@ -2,24 +2,24 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { Home, User, Wrench, Briefcase, BookOpen, Trophy, FolderOpen } from "lucide-react";
 
 export default function Navigation() {
     const [activeSection, setActiveSection] = useState("hero");
 
     const navItems = [
-        { id: "hero", label: "Home", shortLabel: "Home" },
-        { id: "about", label: "About", shortLabel: "About" },
-        { id: "skills", label: "Skills", shortLabel: "Skills" },
-        { id: "experience", label: "Experience", shortLabel: "Exp" },
-        { id: "research", label: "Research", shortLabel: "Res" },
-        { id: "awards", label: "Awards", shortLabel: "Awards" },
-        { id: "projects", label: "Work", shortLabel: "Work" },
+        { id: "hero", label: "Home", icon: Home },
+        { id: "about", label: "About", icon: User },
+        { id: "skills", label: "Skills", icon: Wrench },
+        { id: "experience", label: "Experience", icon: Briefcase },
+        { id: "research", label: "Research", icon: BookOpen },
+        { id: "awards", label: "Awards", icon: Trophy },
+        { id: "projects", label: "Work", icon: FolderOpen },
     ];
 
     useEffect(() => {
         const handleScroll = () => {
             const sections = navItems.map(item => document.getElementById(item.id));
-            // trigger point is slightly above the middle of the screen
             const scrollPos = window.scrollY + window.innerHeight / 3;
 
             for (let i = sections.length - 1; i >= 0; i--) {
@@ -30,14 +30,12 @@ export default function Navigation() {
                 }
             }
             
-            // Highlight home if at the very top
             if (window.scrollY < 100) {
                  setActiveSection("hero");
             }
         };
 
         window.addEventListener("scroll", handleScroll);
-        // initialize
         handleScroll();
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
@@ -50,12 +48,10 @@ export default function Navigation() {
         const startPosition = window.scrollY;
         const distance = targetPosition - startPosition;
         
-        // Calculate dynamic duration based on distance, capped between 800ms and 2000ms
         const distanceDuration = Math.min(Math.max(Math.abs(distance) * 0.5, 800), 2000);
         
         let start: number | null = null;
         
-        // Easing function (easeInOutCubic) for a very smooth start and end
         const easeInOutCubic = (t: number) => 
             t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
             
@@ -79,16 +75,16 @@ export default function Navigation() {
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="fixed bottom-4 sm:bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-[100] pointer-events-auto w-[calc(100%-2rem)] sm:w-auto max-w-[calc(100%-2rem)]"
+            className="fixed bottom-4 sm:bottom-6 md:bottom-10 left-0 right-0 flex justify-center z-[100] pointer-events-none px-4"
         >
-            <nav className="flex items-center gap-0.5 sm:gap-1 md:gap-2 p-1 sm:p-1.5 md:p-2 rounded-full bg-[#080808]/70 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)] overflow-x-auto no-scrollbar justify-center">
+            <nav className="flex items-center gap-1 md:gap-2 p-1.5 md:p-2 rounded-full bg-[#080808]/70 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)] pointer-events-auto">
                 {navItems.map((item) => (
                     <button
                         key={item.id}
                         onClick={() => scrollTo(item.id)}
-                        className={`relative px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs md:text-sm font-medium transition-colors whitespace-nowrap shrink-0 ${
+                        className={`relative flex items-center justify-center rounded-full transition-colors ${
                             activeSection === item.id ? "text-white" : "text-white/40 hover:text-white/80"
-                        }`}
+                        } px-2.5 py-2 sm:px-3 sm:py-2 md:px-4 md:py-2`}
                     >
                         {activeSection === item.id && (
                             <motion.div
@@ -97,12 +93,12 @@ export default function Navigation() {
                                 transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                             />
                         )}
-                        <span className="relative z-10 hidden sm:inline">{item.label}</span>
-                        <span className="relative z-10 sm:hidden">{item.shortLabel}</span>
+                        {/* Icon only on mobile, text on sm+ */}
+                        <item.icon className="relative z-10 w-4 h-4 sm:hidden" strokeWidth={1.5} />
+                        <span className="relative z-10 hidden sm:inline text-xs md:text-sm font-medium">{item.label}</span>
                     </button>
                 ))}
             </nav>
         </motion.div>
     );
 }
-
