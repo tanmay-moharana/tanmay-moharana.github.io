@@ -4,13 +4,21 @@
 
 @layer base {
   body {
+    background-color: #f8f7f4;
+    background-image: 
+      radial-gradient(circle at 15% 50%, rgba(255, 223, 159, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 85% 30%, rgba(200, 180, 160, 0.06) 0%, transparent 40%);
+    background-attachment: fixed;
+    color: #1a1a2e;
+    overflow-x: hidden;
+  }
+
+  .dark body {
     background-color: #030303;
     background-image: 
       radial-gradient(circle at 15% 50%, rgba(20, 20, 30, 0.4) 0%, transparent 40%),
       radial-gradient(circle at 85% 30%, rgba(30, 20, 40, 0.3) 0%, transparent 40%);
-    background-attachment: fixed;
     color: #ffffff;
-    overflow-x: hidden;
   }
 }
 
@@ -19,13 +27,22 @@
   width: 6px;
 }
 ::-webkit-scrollbar-track {
+  background: #f8f7f4; 
+}
+.dark ::-webkit-scrollbar-track {
   background: #030303; 
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1); 
+  background: rgba(0, 0, 0, 0.1); 
   border-radius: 10px;
 }
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1); 
+}
 ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.2); 
+}
+.dark ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.2); 
 }
 
@@ -36,4 +53,15 @@
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Smooth theme transition */
+body,
+section,
+nav,
+footer,
+div[class*="rounded"],
+span[class*="rounded"],
+button {
+  transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
 }

@@ -10,7 +10,7 @@ import Navigation from "@/components/Navigation";
 
 export default function Home() {
   return (
-    <main className="bg-transparent text-white min-h-screen selection:bg-white/30 font-sans">
+    <main className="bg-transparent text-[#1a1a2e] dark:text-white min-h-screen selection:bg-black/10 dark:selection:bg-white/30 font-sans">
       <Navigation />
       
       <div id="hero" className="relative">
@@ -37,8 +37,8 @@ export default function Home() {
         <Projects />
       </div>
 
-      <footer className="py-12 border-t border-white/5 text-center text-white/30 bg-[#060606] text-sm">
-        <p className="hover:text-white/60 transition-colors cursor-pointer tracking-wider">
+      <footer className="py-12 border-t border-gray-200 dark:border-white/5 text-center text-[#4a4a5a]/50 dark:text-white/30 bg-[#f0efec] dark:bg-[#060606] text-sm">
+        <p className="hover:text-[#4a4a5a] dark:hover:text-white/60 transition-colors cursor-pointer tracking-wider">
           © {new Date().getFullYear()} Tanmay Moharana. All rights reserved.
         </p>
       </footer>

@@ -26,21 +26,20 @@ const TypewriterText = ({ phrases }: { phrases: string[] }) => {
                     setTimeout(() => {
                         setPhraseIndex((prev) => (prev + 1) % phrases.length);
                         setIsPaused(false);
-                    }, 500); // brief pause before next phrase
+                    }, 500);
                 }
-            }, 60); // Slower, smoother deletion
+            }, 60);
         } else {
             timer = setTimeout(() => {
                 setDisplayText((prev) => text.slice(0, prev.length + 1));
                 if (displayText.length + 1 >= text.length) {
                     setIsPaused(true);
-                    // Wait before starting to delete
                     setTimeout(() => {
                         setIsDeleting(true);
                         setIsPaused(false);
-                    }, 2500); // 2.5s pause to read before deleting
+                    }, 2500);
                 }
-            }, 120); // Slower, more natural typing speed
+            }, 120);
         }
         return () => clearTimeout(timer);
     }, [displayText, isDeleting, phraseIndex, phrases, isPaused]);
@@ -70,17 +69,17 @@ export default function Overlay() {
 
     return (
         <div ref={containerRef} className="absolute top-0 left-0 w-full h-[500vh] pointer-events-none z-10">
-            <div className="sticky top-0 h-screen w-full flex flex-col justify-center items-center px-6">
+            <div className="sticky top-0 h-screen w-full flex flex-col justify-end items-end px-4 sm:px-6 md:px-10 xl:px-16 pb-20 sm:pb-24 md:pb-28">
 
-                {/* Section 1 */}
+                {/* Section 1 — name & social, positioned at bottom-right to clear the face */}
                 <motion.div
                     style={{ opacity: opacity1, y: y1 }}
-                    className="absolute right-[5%] md:right-[10%] xl:right-[15%] text-right flex flex-col items-end pointer-events-none"
+                    className="text-right flex flex-col items-end pointer-events-none max-w-[90%] sm:max-w-lg md:max-w-xl"
                 >
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-2 drop-shadow-xl">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold tracking-tight text-white mb-1 sm:mb-2 drop-shadow-xl">
                         Tanmay Moharana.
                     </h1>
-                    <p className="text-lg sm:text-xl md:text-2xl text-gray-300 drop-shadow-md mb-8 flex items-center justify-end h-[40px]">
+                    <p className="text-sm sm:text-base md:text-lg xl:text-xl text-gray-300 drop-shadow-md mb-4 sm:mb-6 flex items-center justify-end h-[28px] sm:h-[32px] md:h-[36px]">
                         <TypewriterText phrases={[
                             "Hi, I am Tanmay.",
                             "A Product Leader and Digital Innovator.",
@@ -91,51 +90,51 @@ export default function Overlay() {
                         <motion.span
                             animate={{ opacity: [0, 1, 0] }}
                             transition={{ repeat: Infinity, duration: 0.8 }}
-                            className="inline-block w-[2px] md:w-[3px] h-[20px] md:h-[30px] bg-gray-300 ml-1"
+                            className="inline-block w-[2px] h-[16px] sm:h-[20px] md:h-[24px] bg-gray-300 ml-1"
                         />
                     </p>
 
-                    <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-2 sm:mt-4 justify-end pointer-events-auto">
-                        <a href="https://www.linkedin.com/in/tanmay-moharana/" target="_blank" rel="noreferrer" className="p-3 md:p-4 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all hover:scale-110 active:scale-95">
-                            <Linkedin size={24} className="w-5 h-5 md:w-6 md:h-6" />
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-3 justify-end pointer-events-auto">
+                        <a href="https://www.linkedin.com/in/tanmay-moharana/" target="_blank" rel="noreferrer" className="p-2.5 sm:p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all hover:scale-110 active:scale-95">
+                            <Linkedin size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
                         </a>
-                        <a href="https://github.com/tanmay-moharana" target="_blank" rel="noreferrer" className="p-3 md:p-4 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all hover:scale-110 active:scale-95">
-                            <Github size={24} className="w-5 h-5 md:w-6 md:h-6" />
+                        <a href="https://github.com/tanmay-moharana" target="_blank" rel="noreferrer" className="p-2.5 sm:p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all hover:scale-110 active:scale-95">
+                            <Github size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
                         </a>
-                        <a href="https://medium.com/@tanmaymoharana" target="_blank" rel="noreferrer" className="p-3 md:p-4 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all hover:scale-110 active:scale-95">
-                            <svg className="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" /></svg>
+                        <a href="https://medium.com/@tanmaymoharana" target="_blank" rel="noreferrer" className="p-2.5 sm:p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all hover:scale-110 active:scale-95">
+                            <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" /></svg>
                         </a>
-                        <a href="https://www.facebook.com/tanmay.mailme" target="_blank" rel="noreferrer" className="p-3 md:p-4 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all hover:scale-110 active:scale-95">
-                            <Facebook size={24} className="w-5 h-5 md:w-6 md:h-6" />
+                        <a href="https://www.facebook.com/tanmay.mailme" target="_blank" rel="noreferrer" className="p-2.5 sm:p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all hover:scale-110 active:scale-95">
+                            <Facebook size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
                         </a>
-                        <a href="mailto:tanmay.moharana@gmail.com" className="p-3 md:p-4 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all hover:scale-110 active:scale-95">
-                            <Mail size={24} className="w-5 h-5 md:w-6 md:h-6" />
+                        <a href="mailto:tanmay.moharana@gmail.com" className="p-2.5 sm:p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all hover:scale-110 active:scale-95">
+                            <Mail size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
                         </a>
                     </div>
                 </motion.div>
 
-                {/* Section 2 */}
+                {/* Section 2 — positioned at bottom-left */}
                 <motion.div
                     style={{ opacity: opacity2, y: y2 }}
-                    className="absolute left-[5%] md:left-[10%] xl:left-[15%] max-w-lg pointer-events-none"
+                    className="absolute left-4 sm:left-6 md:left-10 xl:left-16 bottom-20 sm:bottom-24 md:bottom-28 max-w-[85%] sm:max-w-md md:max-w-lg pointer-events-none"
                 >
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white mb-4 md:mb-6 drop-shadow-xl">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-semibold tracking-tight text-white mb-2 md:mb-4 drop-shadow-xl">
                         I build connected products.
                     </h2>
-                    <p className="text-base sm:text-lg md:text-xl text-gray-300 drop-shadow-md">
+                    <p className="text-sm sm:text-base md:text-lg xl:text-xl text-gray-300 drop-shadow-md">
                         Focusing on IoT, hardware platforms, and digital transformation.
                     </p>
                 </motion.div>
 
-                {/* Section 3 */}
+                {/* Section 3 — positioned at bottom-right */}
                 <motion.div
                     style={{ opacity: opacity3, y: y3 }}
-                    className="absolute right-[5%] md:right-[10%] xl:right-[15%] max-w-lg text-right pointer-events-none"
+                    className="absolute right-4 sm:right-6 md:right-10 xl:right-16 bottom-20 sm:bottom-24 md:bottom-28 max-w-[85%] sm:max-w-md md:max-w-lg text-right pointer-events-none"
                 >
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white mb-4 md:mb-6 drop-shadow-xl">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-semibold tracking-tight text-white mb-2 md:mb-4 drop-shadow-xl">
                         Bridging strategy and execution.
                     </h2>
-                    <p className="text-base sm:text-lg md:text-xl text-gray-300 drop-shadow-md">
+                    <p className="text-sm sm:text-base md:text-lg xl:text-xl text-gray-300 drop-shadow-md">
                         Guiding cross-functional teams from vision to reality.
                     </p>
                 </motion.div>

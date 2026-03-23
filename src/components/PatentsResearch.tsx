@@ -21,7 +21,7 @@ export default function PatentsResearch() {
     ];
 
     return (
-        <section className="py-24 md:py-32 px-6 md:px-12 relative z-20 border-t border-white/5">
+        <section className="py-24 md:py-32 px-6 md:px-12 relative z-20 border-t border-gray-200 dark:border-white/5">
             <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
 
                 {/* Patents Column */}
@@ -32,10 +32,10 @@ export default function PatentsResearch() {
                     transition={{ duration: 0.6 }}
                 >
                     <div className="flex items-center gap-4 mb-10">
-                        <div className="p-3 bg-white/10 rounded-xl text-white">
+                        <div className="p-3 bg-black/5 dark:bg-white/10 rounded-xl text-[#1a1a2e] dark:text-white">
                             <Award size={24} />
                         </div>
-                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">Patents</h2>
+                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1a1a2e] dark:text-white">Patents</h2>
                     </div>
 
                     <div className="space-y-6">
@@ -46,10 +46,10 @@ export default function PatentsResearch() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-50px" }}
                                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                                className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors backdrop-blur-md"
+                                className="p-6 rounded-2xl bg-gray-100/80 dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:bg-gray-200/60 dark:hover:bg-white/10 transition-colors backdrop-blur-md"
                             >
-                                <h3 className="text-lg font-medium text-white mb-2 leading-snug">{patent.title}</h3>
-                                <span className="text-sm font-mono text-[#a1a1aa] bg-black/50 px-3 py-1 rounded-md inline-block border border-white/10">
+                                <h3 className="text-lg font-medium text-[#1a1a2e] dark:text-white mb-2 leading-snug">{patent.title}</h3>
+                                <span className="text-sm font-mono text-[#6b7280] dark:text-[#a1a1aa] bg-gray-200/60 dark:bg-black/50 px-3 py-1 rounded-md inline-block border border-gray-200 dark:border-white/10">
                                     {patent.id}
                                 </span>
                             </motion.div>
@@ -65,10 +65,10 @@ export default function PatentsResearch() {
                     transition={{ duration: 0.6 }}
                 >
                     <div className="flex items-center gap-4 mb-10">
-                        <div className="p-3 bg-white/10 rounded-xl text-white">
+                        <div className="p-3 bg-black/5 dark:bg-white/10 rounded-xl text-[#1a1a2e] dark:text-white">
                             <BookOpen size={24} />
                         </div>
-                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">Research</h2>
+                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1a1a2e] dark:text-white">Research</h2>
                     </div>
 
                     <div className="space-y-6">
@@ -79,10 +79,10 @@ export default function PatentsResearch() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-50px" }}
                                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                                className="relative pl-6 before:absolute before:left-0 before:top-3 before:w-2 before:h-px before:bg-white/30"
+                                className="relative pl-6 before:absolute before:left-0 before:top-3 before:w-2 before:h-px before:bg-gray-400 dark:before:bg-white/30"
                             >
-                                <h3 className="text-lg font-medium text-white mb-2 leading-snug">{item.title}</h3>
-                                <p className="text-sm text-[#a1a1aa] leading-relaxed italic border-l-2 border-white/20 pl-4 mt-3">
+                                <h3 className="text-lg font-medium text-[#1a1a2e] dark:text-white mb-2 leading-snug">{item.title}</h3>
+                                <p className="text-sm text-[#6b7280] dark:text-[#a1a1aa] leading-relaxed italic border-l-2 border-gray-300 dark:border-white/20 pl-4 mt-3">
                                     {item.journal}
                                 </p>
                             </motion.div>

@@ -15,25 +15,25 @@ export default function Skills() {
             category: "Product Management",
             icon: Briefcase,
             skills: "Productboard, Jira, Confluence, HubSpot, Figma, Pendo",
-            color: "text-blue-400"
+            iconClass: "text-blue-600 dark:text-blue-400"
         },
         {
             category: "Data & Analytics",
             icon: BarChart3,
             skills: "SQL, Python, R, Microsoft Power-BI, Azure Cloud, Tableau",
-            color: "text-emerald-400"
+            iconClass: "text-emerald-600 dark:text-emerald-400"
         },
         {
             category: "IIoT & Cloud",
             icon: Cloud,
             skills: "Edge Computing, MQTT, REST APIs, Cellular IoT (LTE-M, NB-IoT), AWS IoT, Google Cloud, Firebase",
-            color: "text-cyan-400"
+            iconClass: "text-cyan-600 dark:text-cyan-400"
         },
         {
             category: "Programming",
             icon: Code2,
             skills: "Python, JavaScript/TypeScript, C/C++, HTML/CSS, Flutter",
-            color: "text-violet-400"
+            iconClass: "text-violet-600 dark:text-violet-400"
         }
     ];
 
@@ -61,7 +61,7 @@ export default function Skills() {
     };
 
     return (
-        <section className="py-24 md:py-32 px-6 md:px-12 relative z-20 border-t border-white/5">
+        <section className="py-24 md:py-32 px-6 md:px-12 relative z-20 border-t border-gray-200 dark:border-white/5">
             <div className="max-w-4xl mx-auto space-y-24">
                 
                 {/* Key Skills */}
@@ -71,7 +71,7 @@ export default function Skills() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.6 }}
-                        className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-10 text-white"
+                        className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-10 text-[#1a1a2e] dark:text-white"
                     >
                         Key Skills
                     </motion.h2>
@@ -87,7 +87,7 @@ export default function Skills() {
                             <motion.span
                                 key={idx}
                                 variants={itemVariants}
-                                className="px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-gray-300 text-sm font-medium hover:bg-white/10 hover:border-white/20 hover:text-white transition-all duration-300 cursor-default"
+                                className="px-5 py-2.5 rounded-full bg-black/[0.03] dark:bg-white/5 border border-gray-200 dark:border-white/10 text-[#4a4a5a] dark:text-gray-300 text-sm font-medium hover:bg-black/[0.06] dark:hover:bg-white/10 hover:border-gray-300 dark:hover:border-white/20 hover:text-[#1a1a2e] dark:hover:text-white transition-all duration-300 cursor-default"
                             >
                                 {skill}
                             </motion.span>
@@ -102,7 +102,7 @@ export default function Skills() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.6 }}
-                        className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-10 text-white"
+                        className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-10 text-[#1a1a2e] dark:text-white"
                     >
                         Technical Skills
                     </motion.h2>
@@ -115,15 +115,15 @@ export default function Skills() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-100px" }}
                                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                                className="p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-white/20 transition-colors duration-400 group"
+                                className="p-6 rounded-2xl bg-gray-100/80 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/20 transition-colors duration-400 group"
                             >
                                 <div className="flex items-center gap-4 mb-4">
-                                    <div className={`p-3 rounded-lg bg-white/5 ${tech.color} group-hover:scale-110 transition-transform duration-300`}>
+                                    <div className={`p-3 rounded-lg bg-black/[0.03] dark:bg-white/5 ${tech.iconClass} group-hover:scale-110 transition-transform duration-300`}>
                                         <tech.icon size={24} strokeWidth={1.5} />
                                     </div>
-                                    <h3 className="text-lg font-bold text-white">{tech.category}</h3>
+                                    <h3 className="text-lg font-bold text-[#1a1a2e] dark:text-white">{tech.category}</h3>
                                 </div>
-                                <p className="text-gray-400 text-sm leading-relaxed pl-[3.25rem]">
+                                <p className="text-[#4a4a5a] dark:text-gray-400 text-sm leading-relaxed pl-[3.25rem]">
                                     {tech.skills}
                                 </p>
                             </motion.div>
@@ -138,7 +138,7 @@ export default function Skills() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.6 }}
-                        className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-10 text-white"
+                        className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-10 text-[#1a1a2e] dark:text-white"
                     >
                         Licenses & Certificates
                     </motion.h2>
@@ -154,10 +154,10 @@ export default function Skills() {
                             <motion.div
                                 key={idx}
                                 variants={itemVariants}
-                                className="flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/10 transition-colors duration-300"
+                                className="flex items-center gap-4 p-5 rounded-2xl bg-gray-100/80 dark:bg-white/5 border border-gray-100 dark:border-white/5 hover:bg-gray-200/60 dark:hover:bg-white/10 hover:border-gray-200 dark:hover:border-white/10 transition-colors duration-300"
                             >
-                                <BadgeCheck className="text-yellow-400 shrink-0" size={24} strokeWidth={1.5} />
-                                <span className="text-gray-200 font-medium text-base sm:text-lg">{cert}</span>
+                                <BadgeCheck className="text-yellow-500 dark:text-yellow-400 shrink-0" size={24} strokeWidth={1.5} />
+                                <span className="text-[#2a2a3e] dark:text-gray-200 font-medium text-base sm:text-lg">{cert}</span>
                             </motion.div>
                         ))}
                     </motion.div>
