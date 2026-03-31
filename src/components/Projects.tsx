@@ -4,29 +4,50 @@ import Image from "next/image";
 export default function Projects() {
     const projects = [
         {
-            title: "Remote Support",
-            description: "AR based remote support project using smart glasses.",
-            tags: ["AR", "Smart Glasses", "Innovation"],
+            title: "IoT Edge Hardware Platform",
+            description: (
+                <div className="flex flex-col gap-2">
+                    <span className="block"><strong className="text-[#1a1a2e] dark:text-white">The Problem:</strong> High maintenance downtime due to lack of real-time asset visibility.</span>
+                    <span className="block"><strong className="text-[#1a1a2e] dark:text-white">The Strategy:</strong> Develop a scalable IoT gateway to process sensor data at the edge.</span>
+                    <span className="block"><strong className="text-[#1a1a2e] dark:text-white">The Execution:</strong> Led cross-functional teams across hardware, firmware, and cloud domains.</span>
+                    <span className="block"><strong className="text-[#1a1a2e] dark:text-white">The Impact:</strong> Reduced maintenance downtime by 30% and improved data reliability.</span>
+                </div>
+            ),
+            tags: ["IoT", "Hardware", "Edge Computing"],
+            image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop",
+        },
+        {
+            title: "AR Remote Support Solution",
+            description: (
+                <div className="flex flex-col gap-2">
+                    <span className="block"><strong className="text-[#1a1a2e] dark:text-white">The Problem:</strong> Field engineers lacked immediate expert guidance, extending repair times.</span>
+                    <span className="block"><strong className="text-[#1a1a2e] dark:text-white">The Strategy:</strong> Implement an AR smart glasses product for real-time spatial annotation.</span>
+                    <span className="block"><strong className="text-[#1a1a2e] dark:text-white">The Execution:</strong> Partnered with OEM vendors and guided UX/engineering to launch the platform.</span>
+                    <span className="block"><strong className="text-[#1a1a2e] dark:text-white">The Impact:</strong> Decreased mean time-to-resolution by 40% in pilot deployments.</span>
+                </div>
+            ),
+            tags: ["AR", "B2B SaaS", "Hardware Integration"],
             image: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?q=80&w=800&auto=format&fit=crop",
         },
         {
-            title: "Flappy Bird-AI",
-            description: "AI based flappybird implemented using Python Pygames.",
-            tags: ["Python", "Pygame", "AI"],
+            title: "AI Predictive Maintenance",
+            description: (
+                <div className="flex flex-col gap-2">
+                    <span className="block"><strong className="text-[#1a1a2e] dark:text-white">The Problem:</strong> Unexpected equipment failures causing costly production halts.</span>
+                    <span className="block"><strong className="text-[#1a1a2e] dark:text-white">The Strategy:</strong> Productize machine learning models to predict anomalies proactively.</span>
+                    <span className="block"><strong className="text-[#1a1a2e] dark:text-white">The Execution:</strong> Collaborated with data science to build an actionable customer dashboard.</span>
+                    <span className="block"><strong className="text-[#1a1a2e] dark:text-white">The Impact:</strong> Prevented over 50 hours of unplanned downtime in the first quarter.</span>
+                </div>
+            ),
+            tags: ["AI", "Data Analytics", "Product Strategy"],
             image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop",
-        },
-        {
-            title: "Project Vision",
-            description: "A Virtual Reality based classroom experience.",
-            tags: ["VR", "Education", "Interactive"],
-            image: "https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?q=80&w=800&auto=format&fit=crop",
         },
     ];
 
     return (
         <section className="min-h-screen py-24 md:py-32 px-6 md:px-12 relative z-20 border-t border-gray-200 dark:border-white/5">
             <div className="max-w-5xl mx-auto">
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-12 sm:mb-16 text-[#1a1a2e] dark:text-white">Selected Work</h2>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-12 sm:mb-16 text-[#1a1a2e] dark:text-white">Product Management Case Studies</h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {projects.map((project, idx) => (
@@ -44,7 +65,7 @@ export default function Projects() {
                             </div>
                             <div className="p-8">
                                 <h3 className="text-2xl font-semibold text-[#1a1a2e] dark:text-white mb-3">{project.title}</h3>
-                                <p className="text-[#4a4a5a] dark:text-gray-400 mb-6 leading-relaxed">{project.description}</p>
+                                <div className="text-[#4a4a5a] dark:text-gray-400 mb-6 text-sm">{project.description}</div>
 
                                 <div className="flex flex-wrap gap-2 mb-8">
                                     {project.tags.map(tag => (

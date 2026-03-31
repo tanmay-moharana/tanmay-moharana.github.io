@@ -7,12 +7,16 @@ import PatentsResearch from "@/components/PatentsResearch";
 import HonorsAwards from "@/components/HonorsAwards";
 import Projects from "@/components/Projects";
 import Navigation from "@/components/Navigation";
+import Recommendations from "@/components/Recommendations";
+import ContactHeader from "@/components/ContactHeader";
 
 export default function Home() {
   return (
     <main className="bg-transparent text-[#1a1a2e] dark:text-white min-h-screen selection:bg-black/10 dark:selection:bg-white/30 font-sans">
       <Navigation />
+      <ContactHeader />
       
+
       <div id="hero" className="relative">
         <ScrollyCanvas />
         <Overlay />
@@ -35,6 +39,9 @@ export default function Home() {
       </div>
       <div id="projects">
         <Projects />
+      </div>
+      <div id="recommendations">
+        <Recommendations />
       </div>
 
       <footer className="py-12 border-t border-gray-200 dark:border-white/5 text-center text-[#4a4a5a]/50 dark:text-white/30 bg-[#f0efec] dark:bg-[#060606] text-sm">

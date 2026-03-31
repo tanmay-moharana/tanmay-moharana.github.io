@@ -10,21 +10,21 @@ export default function Experience() {
             company: "Bridgestone Mobility Solutions",
             role: "Product Manager – Hardware Platform",
             duration: "11/2023 – Present",
-            description: "Managing the end-to-end product lifecycle for hardware platforms in mobility solutions.",
+            description: "Managing the end-to-end product lifecycle for hardware platforms in mobility solutions. Launched an IoT sensor feature that reduced maintenance downtime by 20% and grew active hardware deployments by over 10,000 units.",
             logo: "/logos/bridgestone.png"
         },
         {
             company: "KONUX, GmbH",
             role: "Junior Product Manager",
             duration: "09/2021 – 11/2023",
-            description: "Guided cross-functional teams from strategy to execution for IoT products in the manufacturing and railway sectors.",
+            description: "Guided cross-functional teams from strategy to execution for IoT products in the manufacturing and railway sectors. Delivered the next-gen predictive maintenance product 1 month ahead of schedule, improving prediction accuracy by 15%.",
             logo: "/logos/konux.png"
         },
         {
             company: "Hermit Labs",
             role: "Co-Founder / Chief Product Officer",
             duration: "08/2018 – 08/2021",
-            description: "Spearheaded digital solutions tailored to drive efficiency, innovation, and sustainable growth.",
+            description: "Spearheaded digital solutions tailored to drive efficiency, innovation, and sustainable growth. Scaled the startup's product offerings from 0 to 3 core B2B solutions, achieving 200% YoY revenue growth.",
             logo: "/logos/hermit_optimized.png"
         },
         {

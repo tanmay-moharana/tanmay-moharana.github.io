@@ -126,10 +126,9 @@ export default function Overlay() {
                     </p>
                 </motion.div>
 
-                {/* Section 3 — positioned at bottom-right */}
                 <motion.div
                     style={{ opacity: opacity3, y: y3 }}
-                    className="absolute right-4 sm:right-6 md:right-10 xl:right-16 bottom-20 sm:bottom-24 md:bottom-28 max-w-[85%] sm:max-w-md md:max-w-lg text-right pointer-events-none"
+                    className="absolute right-4 sm:right-6 md:right-10 xl:right-16 bottom-20 sm:bottom-24 md:bottom-28 max-w-[85%] sm:max-w-md md:max-w-xl text-right pointer-events-none"
                 >
                     <h2 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-semibold tracking-tight text-white mb-2 md:mb-4 drop-shadow-xl">
                         Bridging strategy and execution.
@@ -137,6 +136,7 @@ export default function Overlay() {
                     <p className="text-sm sm:text-base md:text-lg xl:text-xl text-gray-300 drop-shadow-md">
                         Guiding cross-functional teams from vision to reality.
                     </p>
+
                 </motion.div>
 
             </div>

@@ -2,11 +2,17 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Home, User, Wrench, Briefcase, BookOpen, Trophy, FolderOpen } from "lucide-react";
+import { Home, User, Wrench, Briefcase, BookOpen, Trophy, FolderOpen, MessageSquare, CircleUser } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
+import LoginModal from "./LoginModal";
+import { useAuth } from "../context/AuthContext";
+import { useRouter } from "next/navigation";
 
 export default function Navigation() {
     const [activeSection, setActiveSection] = useState("hero");
+    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+    const { user } = useAuth();
+    const router = useRouter();
 
     const navItems = [
         { id: "hero", label: "Home", icon: Home },
@@ -16,6 +22,7 @@ export default function Navigation() {
         { id: "research", label: "Research", icon: BookOpen },
         { id: "awards", label: "Awards", icon: Trophy },
         { id: "projects", label: "Work", icon: FolderOpen },
+        { id: "recommendations", label: "Kudos", icon: MessageSquare },
     ];
 
     useEffect(() => {
@@ -78,7 +85,7 @@ export default function Navigation() {
             transition={{ duration: 0.8, delay: 1 }}
             className="fixed bottom-4 sm:bottom-6 md:bottom-10 left-0 right-0 flex justify-center z-[100] pointer-events-none px-4"
         >
-            <nav className="flex items-center gap-1 md:gap-2 p-1.5 md:p-2 rounded-full bg-white/70 dark:bg-[#080808]/70 backdrop-blur-xl border border-gray-200/50 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)] pointer-events-auto">
+            <nav className="flex items-center gap-1.5 md:gap-3 p-1.5 md:p-2.5 rounded-full bg-white/70 dark:bg-[#080808]/70 backdrop-blur-2xl border border-gray-200/50 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)] pointer-events-auto">
                 {navItems.map((item) => (
                     <button
                         key={item.id}
@@ -96,9 +103,9 @@ export default function Navigation() {
                                 transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                             />
                         )}
-                        {/* Icon only on mobile, text on sm+ */}
-                        <item.icon className="relative z-10 w-4 h-4 sm:hidden" strokeWidth={1.5} />
-                        <span className="relative z-10 hidden sm:inline text-xs md:text-sm font-medium">{item.label}</span>
+                        {/* Icon is always visible on mobile; alongside text on sm+ */}
+                        <item.icon className="relative z-10 w-4 h-4 sm:mr-2" strokeWidth={1.5} />
+                        <span className="relative z-10 hidden sm:inline text-xs md:text-sm font-bold tracking-wide">{item.label}</span>
                     </button>
                 ))}
 
@@ -112,12 +119,25 @@ export default function Navigation() {
                             transition={{ duration: 0.3, ease: "easeInOut" }}
                             className="flex items-center gap-1 overflow-hidden"
                         >
-                            <div className="w-px h-5 bg-gray-300/50 dark:bg-white/10 mx-0.5" />
+                            <div className="w-px h-6 bg-gray-300/50 dark:bg-white/10 mx-1 md:mx-2" />
                             <ThemeToggle />
+                            <button
+                                onClick={() => user ? router.push('/dashboard') : setIsLoginModalOpen(true)}
+                                className="relative flex items-center justify-center w-8 h-8 md:w-9 md:h-9 rounded-full transition-colors duration-500 focus:outline-none bg-black/5 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/20 ml-1 md:ml-2 overflow-hidden border border-transparent dark:hover:border-white/20"
+                                aria-label={user ? "Go to Dashboard" : "Open Login Modal"}
+                            >
+                                {user?.photoURL ? (
+                                    // eslint-disable-next-line @next/next/no-img-element
+                                    <img src={user.photoURL} alt="Profile" className="w-full h-full object-cover" />
+                                ) : (
+                                    <CircleUser size={16} className={user ? "text-emerald-500 dark:text-emerald-400" : "text-[#1a1a2e] dark:text-white"} strokeWidth={2} />
+                                )}
+                            </button>
                         </motion.div>
                     )}
                 </AnimatePresence>
             </nav>
+            <LoginModal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)} />
         </motion.div>
     );
 }
