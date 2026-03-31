@@ -33,7 +33,7 @@ export default function AgentsList() {
             const data = await res.json();
             setLastResponse(`Advice Generator: "${data.slip.advice}"`);
             setAgent2Status("Fetched");
-        } catch (error) {
+        } catch {
             setLastResponse("Advice Generator encountered an API connection error.");
             setAgent2Status("Standby");
         }

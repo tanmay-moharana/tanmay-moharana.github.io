@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
-import { auth, googleProvider, githubProvider } from "../lib/firebase";
+import { auth, googleProvider } from "../lib/firebase";
 
 interface LoginModalProps {
     isOpen: boolean;
@@ -36,8 +36,8 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
             await signInWithEmailAndPassword(auth, email, password);
             onClose();
             router.push("/dashboard");
-        } catch (err: any) {
-            setError(err.message || "Failed to sign in");
+        } catch (err: unknown) {
+            setError((err as Error).message || "Failed to sign in");
         } finally {
             setLoading(false);
         }
@@ -50,8 +50,8 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
             await signInWithPopup(auth, googleProvider);
             onClose();
             router.push("/dashboard");
-        } catch (err: any) {
-            setError(err.message || "Failed to sign in with Google");
+        } catch (err: unknown) {
+            setError((err as Error).message || "Failed to sign in with Google");
         } finally {
             setLoading(false);
         }
@@ -181,7 +181,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
                         {/* Footer */}
                         <div className="bg-[#1c1b1b] py-6 px-10 flex justify-center">
                             <p className="text-xs text-[#c5c6cc]">
-                                Don't have an account? 
+                                Don&apos;t have an account? 
                                 <a className="text-[#c0c7d6] font-semibold hover:underline ml-1" href="#">Create one now</a>
                             </p>
                         </div>

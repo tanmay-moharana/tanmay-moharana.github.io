@@ -73,7 +73,7 @@ export default function Recommendations() {
                             <MessageSquareQuote className="text-gray-300 dark:text-gray-600/50 mb-6 w-10 h-10 shrink-0" strokeWidth={1.5} />
                             
                             <p className="text-[#4a4a5a] dark:text-gray-300 italic text-sm sm:text-base leading-relaxed flex-grow mb-8 relative z-10">
-                                "{rec.text}"
+                                &quot;{rec.text}&quot;
                             </p>
                             
                             <div className="mt-auto pt-6 border-t border-gray-200 dark:border-white/10 relative z-10">

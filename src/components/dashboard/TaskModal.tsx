@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, KeyboardEvent } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../lib/firebase";
@@ -111,7 +111,7 @@ export default function TaskModal({ task, isOpen, onClose }: TaskModalProps) {
                                 <label className="text-[10px] uppercase text-[#6b7280] tracking-widest font-bold">Priority</label>
                                 <select 
                                     value={priority} 
-                                    onChange={(e) => setPriority(e.target.value as any)}
+                                    onChange={(e) => setPriority(e.target.value as "High"|"Medium"|"Low")}
                                     className="bg-[#1c1b1b] border border-[#ffffff0a] text-sm text-[#c0c7d6] py-1.5 px-3 rounded-lg outline-none focus:border-[#c0c7d6]"
                                 >
                                     <option value="High">🔴 High</option>

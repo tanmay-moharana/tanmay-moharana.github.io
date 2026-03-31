@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Monolith | Control Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-high": "#2a2a2a",
+                        "on-surface": "#e5e2e1",
+                        "secondary": "#c6c5d8",
+                        "outline-variant": "#45474c",
+                        "tertiary-container": "#707272",
+                        "on-secondary-fixed-variant": "#454555",
+                        "on-primary": "#2a313d",
+                        "secondary-container": "#454555",
+                        "inverse-primary": "#585f6c",
+                        "on-surface-variant": "#c5c6cc",
+                        "on-tertiary-container": "#f8f8f8",
+                        "primary-container": "#6b7280",
+                        "on-secondary-container": "#b5b3c6",
+                        "secondary-fixed-dim": "#c6c5d8",
+                        "surface-dim": "#131313",
+                        "on-background": "#e5e2e1",
+                        "primary": "#c0c7d6",
+                        "on-error-container": "#ffdad6",
+                        "surface-bright": "#393939",
+                        "outline": "#8f9096",
+                        "on-tertiary": "#2f3131",
+                        "surface-variant": "#353534",
+                        "surface-tint": "#c0c7d6",
+                        "inverse-surface": "#e5e2e1",
+                        "surface": "#131313",
+                        "inverse-on-surface": "#313030",
+                        "primary-fixed": "#dce2f3",
+                        "tertiary": "#c6c6c7",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "surface-container": "#201f1f",
+                        "surface-container-lowest": "#0e0e0e",
+                        "background": "#131313",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-primary-fixed-variant": "#404754",
+                        "on-secondary": "#2f2f3e",
+                        "on-primary-container": "#f7f7ff",
+                        "on-secondary-fixed": "#1a1a28",
+                        "surface-container-low": "#1c1b1b",
+                        "secondary-fixed": "#e2e0f4",
+                        "primary-fixed-dim": "#c0c7d6",
+                        "on-error": "#690005",
+                        "on-primary-fixed": "#151c27",
+                        "surface-container-highest": "#353534",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#e2e2e2"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0e0e0e;
+            color: #c5c6cc;
+            font-family: 'Inter', sans-serif;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="flex min-h-screen">
+<!-- SideNavBar Shell -->
+<aside class="h-full w-64 border-r border-[#ffffff0a] bg-[#0e0e0e] fixed left-0 top-0 z-40 hidden md:flex flex-col py-6 px-4 space-y-2">
+<div class="mb-10 px-2">
+<h1 class="font-['Plus_Jakarta_Sans'] font-bold text-[#c0c7d6] text-2xl tracking-tighter">MONOLITH</h1>
+<p class="font-['Inter'] text-sm tracking-wide text-[#6b7280] mt-1">Premium Tier</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Active Tab: Board -->
+<a class="flex items-center gap-3 px-3 py-2.5 bg-[#1c1c1c] text-[#c0c7d6] rounded-lg font-semibold hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="trello">pinboard</span>
+<span class="font-['Inter'] text-sm tracking-wide">Board</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#c5c6cc] hover:bg-[#131313] rounded-lg hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="smart_toy">smart_toy</span>
+<span class="font-['Inter'] text-sm tracking-wide">AI Agents</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#c5c6cc] hover:bg-[#131313] rounded-lg hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="monitoring">monitoring</span>
+<span class="font-['Inter'] text-sm tracking-wide">Usage</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#c5c6cc] hover:bg-[#131313] rounded-lg hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="settings">settings</span>
+<span class="font-['Inter'] text-sm tracking-wide">Settings</span>
+</a>
+</nav>
+<div class="pt-6 mt-6 border-t border-[#ffffff0a] space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#6b7280] hover:text-[#c0c7d6] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="help_outline">help_outline</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-[0.2em]">Support</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#6b7280] hover:text-[#c0c7d6] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="logout">logout</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-[0.2em]">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 bg-[#131313] min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 left-0 md:left-64 z-30 h-20 bg-[#131313]/60 backdrop-blur-xl flex justify-between items-center px-8 shadow-[0px_16px_32px_rgba(0,0,0,0.4)]">
+<div class="flex flex-col">
+<span class="font-['Inter'] text-[10px] uppercase tracking-[0.2em] text-[#6b7280]">Dashboard</span>
+<h2 class="font-['Plus_Jakarta_Sans'] text-xl font-bold tracking-tight text-[#c0c7d6]">Control Center</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-8">
+<a class="font-['Plus_Jakarta_Sans'] text-sm tracking-tight text-[#c0c7d6] border-b-2 border-[#c0c7d6] pb-1" href="#">Dashboard</a>
+<a class="font-['Plus_Jakarta_Sans'] text-sm tracking-tight text-[#c5c6cc] hover:text-[#c0c7d6] transition-colors" href="#">Agents</a>
+<a class="font-['Plus_Jakarta_Sans'] text-sm tracking-tight text-[#c5c6cc] hover:text-[#c0c7d6] transition-colors" href="#">Work</a>
+</div>
+<div class="h-10 w-10 rounded-full bg-[#1c1c1c] flex items-center justify-center cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[#c0c7d6]" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</header>
+<div class="pt-28 px-8 pb-12 max-w-[1600px] mx-auto space-y-12">
+<!-- Bento Grid Section: Top Tier -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Agent Control Center (Bento Large) -->
+<div class="lg:col-span-8 space-y-6">
+<div class="flex items-center justify-between">
+<h3 class="font-['Plus_Jakarta_Sans'] text-lg font-semibold text-[#c0c7d6]">Active Agents</h3>
+<span class="font-['Inter'] text-[10px] uppercase tracking-[0.2em] text-primary cursor-pointer hover:underline">Manage All</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Agent Card 1 -->
+<div class="group bg-[#1c1b1b] rounded-xl p-6 hover:bg-[#201f1f] transition-all duration-300 border border-transparent hover:border-[#ffffff0a]">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<span class="px-3 py-1 bg-surface-container-high text-[10px] uppercase tracking-widest text-on-surface-variant rounded-full">Claude 3.5 Sonnet</span>
+</div>
+<h4 class="font-headline text-lg font-bold text-on-surface mb-2">Architect Prime</h4>
+<p class="font-body text-sm text-on-surface-variant mb-6 leading-relaxed">System-wide infrastructure optimization and code auditing.</p>
+<div class="flex items-center justify-between border-t border-[#ffffff0a] pt-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></div>
+<span class="text-xs font-label uppercase tracking-tighter">Ready</span>
+</div>
+<button class="text-xs font-label uppercase tracking-widest text-primary hover:text-on-surface transition-colors">Configure</button>
+</div>
+</div>
+<!-- Agent Card 2 -->
+<div class="group bg-[#1c1b1b] rounded-xl p-6 hover:bg-[#201f1f] transition-all duration-300 border border-transparent hover:border-[#ffffff0a]">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-lg bg-[#2a2a2a] flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="bolt">bolt</span>
+</div>
+<span class="px-3 py-1 bg-surface-container-high text-[10px] uppercase tracking-widest text-on-surface-variant rounded-full">Gemini 1.5 Pro</span>
+</div>
+<h4 class="font-headline text-lg font-bold text-on-surface mb-2">Neural Scribe</h4>
+<p class="font-body text-sm text-on-surface-variant mb-6 leading-relaxed">Content synthesis and creative documentation specialist.</p>
+<div class="flex items-center justify-between border-t border-[#ffffff0a] pt-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.5)]"></div>
+<span class="text-xs font-label uppercase tracking-tighter">Processing</span>
+</div>
+<button class="text-xs font-label uppercase tracking-widest text-primary hover:text-on-surface transition-colors">Configure</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Usage Analytics (Bento Small) -->
+<div class="lg:col-span-4 bg-[#0e0e0e] rounded-xl p-8 border border-[#ffffff0a] flex flex-col justify-between">
+<div>
+<h3 class="font-['Plus_Jakarta_Sans'] text-lg font-semibold text-[#c0c7d6] mb-1">Consumption</h3>
+<p class="font-['Inter'] text-[10px] uppercase tracking-[0.2em] text-[#6b7280]">Current Billing Cycle</p>
+</div>
+<div class="space-y-8 my-10">
+<div class="space-y-2">
+<div class="flex justify-between items-end">
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Tokens Utilized</span>
+<span class="font-headline font-bold text-primary">84%</span>
+</div>
+<div class="h-1.5 w-full bg-[#1c1c1c] rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-primary-container" style="width: 84%;"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-end">
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Compute Hours</span>
+<span class="font-headline font-bold text-secondary">12.4h</span>
+</div>
+<div class="h-1.5 w-full bg-[#1c1c1c] rounded-full overflow-hidden">
+<div class="h-full bg-secondary" style="width: 45%;"></div>
+</div>
+</div>
+</div>
+<div class="pt-6 border-t border-[#ffffff0a] flex items-center justify-between">
+<div>
+<span class="block text-[10px] uppercase text-[#6b7280] tracking-widest">Est. Cost</span>
+<span class="text-xl font-bold text-[#c0c7d6]">$1,240.00</span>
+</div>
+<span class="material-symbols-outlined text-primary-container" data-icon="trending_up">trending_up</span>
+</div>
+</div>
+</section>
+<!-- Kanban Board Section -->
+<section class="space-y-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<h3 class="font-['Plus_Jakarta_Sans'] text-lg font-semibold text-[#c0c7d6]">Activities</h3>
+<span class="px-2 py-0.5 rounded bg-primary/10 text-primary text-[10px] font-bold">12 Total</span>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-primary text-on-primary rounded-lg text-xs font-bold uppercase tracking-widest active:scale-95 transition-all">New Task</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 overflow-x-auto hide-scrollbar pb-4">
+<!-- Column: To Do -->
+<div class="space-y-4 min-w-[320px]">
+<div class="flex items-center justify-between px-2 mb-4">
+<span class="font-label text-[10px] uppercase tracking-[0.2em] text-[#6b7280]">To Do / 04</span>
+<span class="material-symbols-outlined text-sm text-[#6b7280]" data-icon="more_horiz">more_horiz</span>
+</div>
+<div class="bg-[#1c1b1b] p-4 rounded-lg border border-transparent hover:border-[#ffffff0a] cursor-grab transition-colors">
+<span class="inline-block px-2 py-0.5 bg-[#2a2a2a] text-[#c0c7d6] text-[8px] uppercase font-bold rounded mb-3">Priority: High</span>
+<h5 class="text-sm font-semibold text-[#e5e2e1] mb-2">Audit Ethereum Smart Contracts</h5>
+<p class="text-xs text-[#c5c6cc] mb-4">Initial scan for reentrancy vulnerabilities in the liquidity bridge.</p>
+<div class="flex justify-between items-center">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border border-[#0e0e0e] bg-primary-container flex items-center justify-center text-[8px] text-white">CP</div>
+</div>
+<span class="text-[10px] text-[#6b7280] font-mono">ID-2849</span>
+</div>
+</div>
+<div class="bg-[#1c1b1b] p-4 rounded-lg border border-transparent hover:border-[#ffffff0a] cursor-grab transition-colors">
+<span class="inline-block px-2 py-0.5 bg-[#2a2a2a] text-[#c0c7d6] text-[8px] uppercase font-bold rounded mb-3">Task</span>
+<h5 class="text-sm font-semibold text-[#e5e2e1] mb-2">Sync API Documentation</h5>
+<div class="flex justify-between items-center mt-4">
+<span class="material-symbols-outlined text-xs text-[#6b7280]" data-icon="attach_file">attach_file</span>
+<span class="text-[10px] text-[#6b7280] font-mono">ID-2850</span>
+</div>
+</div>
+</div>
+<!-- Column: In Progress -->
+<div class="space-y-4 min-w-[320px]">
+<div class="flex items-center justify-between px-2 mb-4">
+<span class="font-label text-[10px] uppercase tracking-[0.2em] text-primary">In Progress / 02</span>
+<span class="material-symbols-outlined text-sm text-[#6b7280]" data-icon="more_horiz">more_horiz</span>
+</div>
+<div class="bg-[#201f1f] p-4 rounded-lg border border-primary/20 cursor-grab relative">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary rounded-l-lg"></div>
+<span class="inline-block px-2 py-0.5 bg-primary/20 text-primary text-[8px] uppercase font-bold rounded mb-3">Active Agent</span>
+<h5 class="text-sm font-semibold text-[#e5e2e1] mb-2">Model Fine-Tuning: Core v2</h5>
+<p class="text-xs text-[#c5c6cc] mb-4">Iterating on the embedding layers for better semantic retrieval.</p>
+<div class="w-full bg-[#131313] h-1 rounded-full overflow-hidden mb-4">
+<div class="bg-primary h-full" style="width: 65%;"></div>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border border-[#0e0e0e] bg-secondary flex items-center justify-center text-[8px] text-[#2f2f3e]">NS</div>
+</div>
+<span class="text-[10px] text-primary font-mono italic">RUNNING</span>
+</div>
+</div>
+</div>
+<!-- Column: Done -->
+<div class="space-y-4 min-w-[320px]">
+<div class="flex items-center justify-between px-2 mb-4">
+<span class="font-label text-[10px] uppercase tracking-[0.2em] text-[#6b7280]">Completed / 06</span>
+<span class="material-symbols-outlined text-sm text-[#6b7280]" data-icon="more_horiz">more_horiz</span>
+</div>
+<div class="bg-[#1c1b1b] p-4 rounded-lg border border-transparent opacity-60 transition-opacity hover:opacity-100 cursor-default">
+<h5 class="text-sm font-semibold text-[#e5e2e1] line-through mb-2">Update Kernel Modules</h5>
+<div class="flex justify-between items-center">
+<span class="material-symbols-outlined text-emerald-500 text-xs" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-[10px] text-[#6b7280] font-mono">ID-2712</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer Shell -->
+<footer class="w-full py-12 border-t border-[#ffffff0a] bg-[#080808]">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 max-w-7xl mx-auto">
+<p class="font-['Inter'] text-[10px] uppercase tracking-[0.2em] text-[#6b7280] mb-4 md:mb-0">© 2024 Monolith Studio. All rights reserved.</p>
+<div class="flex gap-8">
+<a class="font-['Inter'] text-[10px] uppercase tracking-[0.2em] text-[#6b7280] hover:text-[#c0c7d6] transition-colors" href="#">Privacy</a>
+<a class="font-['Inter'] text-[10px] uppercase tracking-[0.2em] text-[#6b7280] hover:text-[#c0c7d6] transition-colors" href="#">Terms</a>
+<a class="font-['Inter'] text-[10px] uppercase tracking-[0.2em] text-[#6b7280] hover:text-[#c0c7d6] transition-colors" href="#">API Status</a>
+</div>
+</div>
+</footer>
+</main>
+<!-- Contextual FAB (Only on Board/Home) -->
+<div class="fixed bottom-8 right-8 z-50">
+<button class="w-14 h-14 rounded-full bg-primary text-on-primary shadow-[0px_16px_32px_rgba(0,0,0,0.4)] flex items-center justify-center hover:scale-105 active:scale-95 transition-transform group">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+<span class="absolute right-16 bg-surface-container-high text-on-surface px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">Create New</span>
+</button>
+</div>
+</body></html>

@@ -46,6 +46,7 @@ export default function Navigation() {
         window.addEventListener("scroll", handleScroll);
         handleScroll();
         return () => window.removeEventListener("scroll", handleScroll);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const scrollTo = (id: string) => {

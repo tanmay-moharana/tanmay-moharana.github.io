@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MONOLITH - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-high": "#2a2a2a",
+              "on-surface": "#e5e2e1",
+              "secondary": "#c6c5d8",
+              "outline-variant": "#45474c",
+              "tertiary-container": "#707272",
+              "on-secondary-fixed-variant": "#454555",
+              "on-primary": "#2a313d",
+              "secondary-container": "#454555",
+              "inverse-primary": "#585f6c",
+              "on-surface-variant": "#c5c6cc",
+              "on-tertiary-container": "#f8f8f8",
+              "primary-container": "#6b7280",
+              "on-secondary-container": "#b5b3c6",
+              "secondary-fixed-dim": "#c6c5d8",
+              "surface-dim": "#131313",
+              "on-background": "#e5e2e1",
+              "primary": "#c0c7d6",
+              "on-error-container": "#ffdad6",
+              "surface-bright": "#393939",
+              "outline": "#8f9096",
+              "on-tertiary": "#2f3131",
+              "surface-variant": "#353534",
+              "surface-tint": "#c0c7d6",
+              "inverse-surface": "#e5e2e1",
+              "surface": "#131313",
+              "inverse-on-surface": "#313030",
+              "primary-fixed": "#dce2f3",
+              "tertiary": "#c6c6c7",
+              "tertiary-fixed-dim": "#c6c6c7",
+              "surface-container": "#201f1f",
+              "surface-container-lowest": "#0e0e0e",
+              "background": "#131313",
+              "on-tertiary-fixed-variant": "#454747",
+              "error-container": "#93000a",
+              "on-tertiary-fixed": "#1a1c1c",
+              "on-primary-fixed-variant": "#404754",
+              "on-secondary": "#2f2f3e",
+              "on-primary-container": "#f7f7ff",
+              "on-secondary-fixed": "#1a1a28",
+              "surface-container-low": "#1c1b1b",
+              "secondary-fixed": "#e2e0f4",
+              "primary-fixed-dim": "#c0c7d6",
+              "on-error": "#690005",
+              "on-primary-fixed": "#151c27",
+              "surface-container-highest": "#353534",
+              "error": "#ffb4ab",
+              "tertiary-fixed": "#e2e2e2"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-obsidian-mesh {
+            background-color: #080808;
+            background-image: radial-gradient(at 0% 0%, #131313 0, transparent 50%), radial-gradient(at 100% 0%, #1c1c1c 0, transparent 50%);
+        }
+        .glass-panel {
+            background: rgba(19, 19, 19, 0.6);
+            backdrop-filter: blur(24px);
+        }
+    </style>
+</head>
+<body class="bg-obsidian-mesh text-on-surface font-body min-h-screen">
+<!-- Content Background (Simulated Portfolio Context) -->
+<main class="fixed inset-0 z-0 overflow-hidden flex flex-col items-center justify-center p-8 opacity-40">
+<div class="max-w-7xl w-full grid grid-cols-12 gap-6">
+<div class="col-span-8 h-96 bg-surface-container rounded-xl overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Abstract 3D render of dark flowing obsidian waves with metallic silver highlights and dramatic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLeiU_Phu5JlKieVSpHD0HJzuf8rYNzdKb1cnVDKiU1PMHGQw0z02zrHR8RxRVcXZqkptEnRVB6gx5VhskX6-6abeWELnGCSORFFEfIEHDyIVMrqwhuRl5WJLbdN9vNi_ZE3nSs97z4yCVLpbYAjr96SBHG9sBAqP4uuKxSvuok84x0VWJGwHGTWv7DGfH3XVYm29dFV0mDyYrMOZU8uivkOaWnqrwvzbx_lt9AgmsWpZMe9hOTgBFy9uwKoCXRKjtJNS5JdnC33Vw"/>
+<div class="absolute bottom-8 left-8">
+<h1 class="font-headline text-5xl font-extrabold tracking-tighter text-on-surface">THE MONOLITH</h1>
+<p class="font-label uppercase tracking-[0.2em] text-on-surface-variant text-xs mt-2">Curated Digital Architecture</p>
+</div>
+</div>
+<div class="col-span-4 h-96 bg-surface-container-low rounded-xl flex items-center justify-center p-12">
+<div class="space-y-4">
+<div class="h-2 w-24 bg-primary-container rounded-full"></div>
+<div class="h-2 w-48 bg-outline-variant/30 rounded-full"></div>
+<div class="h-2 w-32 bg-outline-variant/30 rounded-full"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+<!-- Login Modal Container -->
+<div class="w-full max-w-md bg-surface border border-outline-variant/15 rounded-xl shadow-[0px_16px_32px_rgba(0,0,0,0.6)] overflow-hidden">
+<div class="p-8 md:p-10 space-y-8">
+<!-- Header -->
+<div class="text-center space-y-2">
+<div class="flex justify-center mb-6">
+<div class="h-12 w-12 bg-primary flex items-center justify-center rounded-lg shadow-lg">
+<span class="material-symbols-outlined text-on-primary text-3xl" style="font-variation-settings: 'FILL' 1;">dataset</span>
+</div>
+</div>
+<h2 class="font-headline text-2xl font-bold text-on-surface tracking-tight">Welcome back</h2>
+<p class="text-on-surface-variant text-sm font-body">Log in to your MONOLITH account to continue.</p>
+</div>
+<!-- Social Login Cluster -->
+<div class="grid grid-cols-1 gap-3">
+<button class="flex items-center justify-center gap-3 w-full h-12 bg-surface-container-high hover:bg-surface-bright text-on-surface rounded-lg transition-all duration-300 border border-outline-variant/10 group">
+<svg class="w-5 h-5 group-hover:scale-110 transition-transform" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 12-4.53z" fill="#EA4335"></path>
+</svg>
+<span class="font-label text-sm font-medium">Continue with Google</span>
+</button>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 h-12 bg-surface-container-high hover:bg-surface-bright text-on-surface rounded-lg transition-all duration-300 border border-outline-variant/10 group">
+<span class="material-symbols-outlined text-xl group-hover:scale-110 transition-transform">code</span>
+<span class="font-label text-xs font-medium uppercase tracking-wider">GitHub</span>
+</button>
+<button class="flex items-center justify-center gap-2 h-12 bg-surface-container-high hover:bg-surface-bright text-on-surface rounded-lg transition-all duration-300 border border-outline-variant/10 group">
+<span class="material-symbols-outlined text-xl group-hover:scale-110 transition-transform">group</span>
+<span class="font-label text-xs font-medium uppercase tracking-wider">LinkedIn</span>
+</button>
+</div>
+</div>
+<!-- Divider -->
+<div class="flex items-center gap-4">
+<div class="h-[1px] flex-1 bg-outline-variant/20"></div>
+<span class="text-[10px] font-label uppercase tracking-[0.2em] text-on-surface-variant">or</span>
+<div class="h-[1px] flex-1 bg-outline-variant/20"></div>
+</div>
+<!-- Email Form -->
+<form action="#" class="space-y-5" method="POST">
+<div class="space-y-1.5">
+<label class="font-label text-xs uppercase tracking-widest text-on-surface-variant ml-1" for="email">Email Address</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline text-lg">mail</span>
+</div>
+<input class="block w-full pl-12 pr-4 py-3 bg-surface-container-lowest border border-outline-variant/20 rounded-lg text-on-surface placeholder:text-outline-variant focus:ring-1 focus:ring-primary focus:border-primary transition-all outline-none text-sm" id="email" name="email" placeholder="name@company.com" type="email"/>
+</div>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between items-center ml-1">
+<label class="font-label text-xs uppercase tracking-widest text-on-surface-variant" for="password">Password</label>
+<a class="text-[10px] font-label uppercase tracking-widest text-primary hover:text-on-surface transition-colors" href="#">Forgot?</a>
+</div>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline text-lg">lock</span>
+</div>
+<input class="block w-full pl-12 pr-4 py-3 bg-surface-container-lowest border border-outline-variant/20 rounded-lg text-on-surface placeholder:text-outline-variant focus:ring-1 focus:ring-primary focus:border-primary transition-all outline-none text-sm" id="password" name="password" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<button class="w-full h-12 bg-primary text-on-primary font-headline font-bold text-sm rounded-lg hover:shadow-[0px_0px_20px_rgba(192,199,214,0.3)] active:scale-[0.98] transition-all duration-300" type="submit">
+                        Sign In to Dashboard
+                    </button>
+</form>
+</div>
+<!-- Footer -->
+<div class="bg-surface-container-low py-6 px-10 flex justify-center">
+<p class="text-xs text-on-surface-variant">
+                    Don't have an account? 
+                    <a class="text-primary font-semibold hover:underline ml-1" href="#">Create one now</a>
+</p>
+</div>
+</div>
+</div>
+<!-- Hidden Navigation Shell (Suppressed as per rules for focus journey) -->
+<!-- The Footer below is rendered purely to show the branding as a subtle anchor at the bottom of the viewport -->
+<footer class="fixed bottom-0 w-full z-10 py-6 pointer-events-none">
+<div class="max-w-7xl mx-auto px-12 flex justify-between items-center">
+<div class="font-headline font-extrabold tracking-tighter text-on-surface-variant/20 text-xl">MONOLITH</div>
+<div class="text-[10px] font-label uppercase tracking-[0.2em] text-on-surface-variant/20">© 2024 Monolith Studio</div>
+</div>
+</footer>
+</body></html>
