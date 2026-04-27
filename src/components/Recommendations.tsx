@@ -1,9 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { MessageSquareQuote } from "lucide-react";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { MessageSquareQuote, ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function Recommendations() {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [isHovered, setIsHovered] = useState(false);
+
     const recommendations = [
         {
             name: "David Kronmüller",
@@ -31,63 +35,126 @@ export default function Recommendations() {
         }
     ];
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        show: {
-            opacity: 1,
-            transition: { staggerChildren: 0.1 }
-        }
-    };
+    useEffect(() => {
+        if (isHovered) return;
+        const interval = setInterval(() => {
+            setActiveIndex((prev) => (prev + 1) % recommendations.length);
+        }, 6000); // 6 seconds to give enough time to read
+        return () => clearInterval(interval);
+    }, [isHovered, recommendations.length]);
 
-    const itemVariants = {
-        hidden: { opacity: 0, y: 30 },
-        show: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-    };
+    const nextSlide = () => setActiveIndex((prev) => (prev + 1) % recommendations.length);
+    const prevSlide = () => setActiveIndex((prev) => (prev - 1 + recommendations.length) % recommendations.length);
 
     return (
-        <section className="py-24 md:py-32 px-6 md:px-12 relative z-20 border-t border-gray-200 dark:border-white/5">
-            <div className="max-w-4xl mx-auto">
-                <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.6 }}
-                    className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-16 text-[#1a1a2e] dark:text-white"
-                >
-                    Recommendations
-                </motion.h2>
+        <section className="py-24 md:py-32 px-6 md:px-12 relative z-20 border-t border-gray-200 dark:border-white/5 overflow-hidden">
+            <div className="max-w-5xl mx-auto">
+                <div className="flex items-center justify-between mb-12 sm:mb-16">
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1a1a2e] dark:text-white">Kudos</h2>
+                    
+                    {/* Rotation Timer Indicator (Top Right) */}
+                    <div className="hidden md:flex items-center justify-center relative w-12 h-12">
+                        <svg className="w-10 h-10 -rotate-90 text-[#1a1a2e] dark:text-white">
+                           <circle cx="20" cy="20" r="16" stroke="currentColor" strokeWidth="3" fill="none" className="opacity-10" />
+                           <motion.circle 
+                               cx="20" cy="20" r="16" stroke="currentColor" strokeWidth="3" fill="none" 
+                               strokeDasharray={2 * Math.PI * 16}
+                               initial={{ strokeDashoffset: 2 * Math.PI * 16 }}
+                               animate={{ strokeDashoffset: isHovered ? undefined : 0 }}
+                               transition={{ duration: 6, ease: "linear" }}
+                               key={activeIndex}
+                           />
+                        </svg>
+                        <span className="absolute text-xs font-bold">{activeIndex + 1}/{recommendations.length}</span>
+                    </div>
+                </div>
 
-                <motion.div 
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, margin: "-100px" }}
-                    className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
+                <div 
+                    className="relative rounded-3xl overflow-hidden bg-gray-100/80 dark:bg-white/5 border border-gray-200 dark:border-white/10 backdrop-blur-md hover:shadow-[0_0_40px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_40px_rgba(255,255,255,0.08)] transition-all duration-500"
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                    onTouchStart={() => setIsHovered(true)}
+                    onTouchEnd={() => setIsHovered(false)}
                 >
-                    {recommendations.map((rec, idx) => (
-                        <motion.div
-                            key={idx}
-                            variants={itemVariants}
-                            className="flex flex-col p-6 sm:p-8 rounded-3xl bg-gray-100/80 dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/20 transition-colors duration-300 relative overflow-hidden"
+                    <div className="relative h-[650px] md:h-[450px]">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={activeIndex}
+                                initial={{ opacity: 0, scale: 0.98 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 1.02 }}
+                                transition={{ duration: 0.4, ease: "easeInOut" }}
+                                className="absolute inset-0 w-full h-full flex p-6 sm:p-12 items-center justify-center"
+                            >
+                                <div className="w-full h-full flex flex-col justify-center items-center text-center">
+                                    <MessageSquareQuote className="text-gray-300 dark:text-gray-600/50 mb-6 lg:mb-8 w-12 h-12 shrink-0" strokeWidth={1.5} />
+                                    
+                                    <p className="text-[#4a4a5a] dark:text-gray-300 italic text-base md:text-xl lg:text-2xl leading-relaxed max-w-4xl mb-8 flex-grow flex items-center">
+                                        &quot;{recommendations[activeIndex].text}&quot;
+                                    </p>
+                                    
+                                    <div className="mt-auto pt-6 border-t border-gray-200 dark:border-white/10 relative w-full max-w-2xl px-8">
+                                        <h3 className="font-bold text-[#1a1a2e] dark:text-white text-lg md:text-xl">{recommendations[activeIndex].name}</h3>
+                                        <p className="text-sm md:text-base text-gray-500 dark:text-gray-400 mt-2">
+                                            {recommendations[activeIndex].title}
+                                        </p>
+                                        <p className="text-xs md:text-sm text-gray-400 dark:text-orange-500/80 mt-2 font-medium">
+                                            {recommendations[activeIndex].date}
+                                        </p>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        </AnimatePresence>
+                    </div>
+
+                    {/* Navigation Buttons inside frame */}
+                    <div className="absolute top-1/2 -translate-y-1/2 left-4 z-20">
+                        <button 
+                            onClick={prevSlide}
+                            className="p-2.5 rounded-full bg-white/80 dark:bg-black/80 backdrop-blur-md text-[#1a1a2e] dark:text-white border border-gray-200 dark:border-white/10 hover:bg-white dark:hover:bg-black transition-colors shadow-lg"
                         >
-                            <MessageSquareQuote className="text-gray-300 dark:text-gray-600/50 mb-6 w-10 h-10 shrink-0" strokeWidth={1.5} />
-                            
-                            <p className="text-[#4a4a5a] dark:text-gray-300 italic text-sm sm:text-base leading-relaxed flex-grow mb-8 relative z-10">
-                                &quot;{rec.text}&quot;
-                            </p>
-                            
-                            <div className="mt-auto pt-6 border-t border-gray-200 dark:border-white/10 relative z-10">
-                                <h3 className="font-bold text-[#1a1a2e] dark:text-white text-base">{rec.name}</h3>
-                                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2" title={rec.title}>
-                                    {rec.title}
-                                </p>
-                                <p className="text-xs text-gray-400 dark:text-orange-500/80 mt-2 font-medium">
-                                    {rec.date}
-                                </p>
-                            </div>
-                        </motion.div>
+                            <ChevronLeft size={20} />
+                        </button>
+                    </div>
+                    <div className="absolute top-1/2 -translate-y-1/2 right-4 z-20">
+                        <button 
+                            onClick={nextSlide}
+                            className="p-2.5 rounded-full bg-white/80 dark:bg-black/80 backdrop-blur-md text-[#1a1a2e] dark:text-white border border-gray-200 dark:border-white/10 hover:bg-white dark:hover:bg-black transition-colors shadow-lg"
+                        >
+                            <ChevronRight size={20} />
+                        </button>
+                    </div>
+                </div>
+
+                {/* Dot Indicators */}
+                <div className="flex justify-center items-center gap-3 mt-8">
+                    {recommendations.map((_, idx) => (
+                        <button
+                            key={idx}
+                            onClick={() => setActiveIndex(idx)}
+                            className={`h-2 rounded-full transition-all duration-300 ${
+                                activeIndex === idx 
+                                    ? "w-8 bg-[#1a1a2e] dark:bg-white" 
+                                    : "w-2 bg-gray-300 dark:bg-white/20 hover:bg-gray-400 dark:hover:bg-white/40"
+                            }`}
+                        />
                     ))}
-                </motion.div>
+                    
+                    {/* Mobile Rotation Timer (Bottom) */}
+                    <div className="md:hidden ml-2 flex items-center justify-center relative w-6 h-6">
+                        <svg className="w-6 h-6 -rotate-90 text-[#1a1a2e] dark:text-white">
+                           <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" className="opacity-10" />
+                           <motion.circle 
+                               cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" 
+                               strokeDasharray={2 * Math.PI * 10}
+                               initial={{ strokeDashoffset: 2 * Math.PI * 10 }}
+                               animate={{ strokeDashoffset: isHovered ? undefined : 0 }}
+                               transition={{ duration: 6, ease: "linear" }}
+                               key={activeIndex}
+                           />
+                        </svg>
+                    </div>
+                </div>
             </div>
         </section>
     );
