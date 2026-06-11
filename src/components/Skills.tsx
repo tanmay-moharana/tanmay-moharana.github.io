@@ -115,7 +115,7 @@ export default function Skills() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-100px" }}
                                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                                className="p-6 rounded-2xl bg-gray-100/80 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/20 transition-colors duration-400 group"
+                                className="glass-card p-6 rounded-2xl transition-transform duration-400 hover:-translate-y-1 group"
                             >
                                 <div className="flex items-center gap-4 mb-4">
                                     <div className={`p-3 rounded-lg bg-black/[0.03] dark:bg-white/5 ${tech.iconClass} group-hover:scale-110 transition-transform duration-300`}>
@@ -154,7 +154,7 @@ export default function Skills() {
                             <motion.div
                                 key={idx}
                                 variants={itemVariants}
-                                className="flex items-center gap-4 p-5 rounded-2xl bg-gray-100/80 dark:bg-white/5 border border-gray-100 dark:border-white/5 hover:bg-gray-200/60 dark:hover:bg-white/10 hover:border-gray-200 dark:hover:border-white/10 transition-colors duration-300"
+                                className="glass-card flex items-center gap-4 p-5 rounded-2xl transition-transform duration-300 hover:-translate-y-0.5"
                             >
                                 <BadgeCheck className="text-yellow-500 dark:text-yellow-400 shrink-0" size={24} strokeWidth={1.5} />
                                 <span className="text-[#2a2a3e] dark:text-gray-200 font-medium text-base sm:text-lg">{cert}</span>

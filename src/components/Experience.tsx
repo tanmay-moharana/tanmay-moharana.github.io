@@ -80,7 +80,7 @@ export default function Experience() {
                                 className="w-[calc(100%-3rem)] md:w-5/12 ml-auto md:ml-0"
                             >
                                 {/* Card */}
-                                <div className="p-6 rounded-2xl bg-gray-100/80 dark:bg-white/5 border border-gray-200 dark:border-white/10 backdrop-blur-md group-hover:border-gray-300 dark:group-hover:border-white/20 transition-colors duration-400">
+                                <div className="glass-card p-6 rounded-2xl transition-transform duration-400 group-hover:-translate-y-1">
                                     <div className="flex flex-col mb-2">
                                         <span className="text-sm font-medium text-[#6b7280] dark:text-[#a1a1aa] mb-1 tracking-wider">{exp.duration}</span>
                                         <h3 className="text-xl font-bold text-[#1a1a2e] dark:text-white leading-tight mb-2">{exp.role}</h3>

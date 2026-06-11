@@ -55,7 +55,7 @@ export default function HonorsAwards() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ duration: 0.5, delay: idx * 0.15 }}
-                            className={`p-6 rounded-2xl bg-gray-100/80 dark:bg-white/5 backdrop-blur-md border ${award.borderClass} hover:border-gray-300 dark:hover:border-white/20 transition-all duration-400 group flex flex-col items-start`}
+                            className={`glass-card p-6 rounded-2xl border ${award.borderClass} hover:-translate-y-1 transition-transform duration-400 group flex flex-col items-start`}
                         >
                             <div className={`p-4 rounded-xl ${award.bgClass} ${award.iconClass} mb-6 group-hover:scale-110 transition-transform duration-300`}>
                                 <award.icon size={32} strokeWidth={1.5} />

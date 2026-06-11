@@ -9,10 +9,14 @@ import Projects from "@/components/Projects";
 import Navigation from "@/components/Navigation";
 import Recommendations from "@/components/Recommendations";
 import ContactHeader from "@/components/ContactHeader";
+import AmbientBackground from "@/components/AmbientBackground";
+import ScrollProgress from "@/components/ScrollProgress";
 
 export default function Home() {
   return (
     <main className="bg-transparent text-[#1a1a2e] dark:text-white min-h-screen selection:bg-black/10 dark:selection:bg-white/30 font-sans">
+      <AmbientBackground />
+      <ScrollProgress />
       <Navigation />
       <ContactHeader />
       

@@ -50,7 +50,15 @@ export default function Recommendations() {
         <section className="py-24 md:py-32 px-6 md:px-12 relative z-20 border-t border-gray-200 dark:border-white/5 overflow-hidden">
             <div className="max-w-5xl mx-auto">
                 <div className="flex items-center justify-between mb-12 sm:mb-16">
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1a1a2e] dark:text-white">Kudos</h2>
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                        className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1a1a2e] dark:text-white"
+                    >
+                        Kudos
+                    </motion.h2>
                     
                     {/* Rotation Timer Indicator (Top Right) */}
                     <div className="hidden md:flex items-center justify-center relative w-12 h-12">
@@ -70,7 +78,7 @@ export default function Recommendations() {
                 </div>
 
                 <div 
-                    className="relative rounded-3xl overflow-hidden bg-gray-100/80 dark:bg-white/5 border border-gray-200 dark:border-white/10 backdrop-blur-md hover:shadow-[0_0_40px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_40px_rgba(255,255,255,0.08)] transition-all duration-500"
+                    className="glass-card relative rounded-3xl overflow-hidden hover:shadow-[0_0_50px_rgba(139,147,255,0.18)] transition-all duration-500"
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
                     onTouchStart={() => setIsHovered(true)}

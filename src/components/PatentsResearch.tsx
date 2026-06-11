@@ -46,7 +46,7 @@ export default function PatentsResearch() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-50px" }}
                                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                                className="p-6 rounded-2xl bg-gray-100/80 dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:bg-gray-200/60 dark:hover:bg-white/10 transition-colors backdrop-blur-md"
+                                className="glass-card p-6 rounded-2xl transition-transform duration-300 hover:-translate-y-1"
                             >
                                 <h3 className="text-lg font-medium text-[#1a1a2e] dark:text-white mb-2 leading-snug">{patent.title}</h3>
                                 <span className="text-sm font-mono text-[#6b7280] dark:text-[#a1a1aa] bg-gray-200/60 dark:bg-black/50 px-3 py-1 rounded-md inline-block border border-gray-200 dark:border-white/10">

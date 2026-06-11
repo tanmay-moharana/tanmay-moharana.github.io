@@ -80,20 +80,25 @@ export default function Navigation() {
     };
 
     return (
-        <motion.div 
+        <motion.div
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1 }}
+            transition={{ duration: 0.7, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="fixed bottom-4 sm:bottom-6 md:bottom-10 left-0 right-0 flex justify-center z-[100] pointer-events-none px-4"
         >
             <nav className="flex items-center gap-1.5 md:gap-3 p-1.5 md:p-2.5 rounded-full bg-white/70 dark:bg-[#080808]/70 backdrop-blur-2xl border border-gray-200/50 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)] pointer-events-auto">
-                {navItems.map((item) => (
-                    <button
+                {navItems.map((item, index) => (
+                    <motion.button
                         key={item.id}
                         onClick={() => scrollTo(item.id)}
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.7 + index * 0.05, type: "spring", stiffness: 300, damping: 20 }}
+                        whileHover={{ scale: 1.12 }}
+                        whileTap={{ scale: 0.92 }}
                         className={`relative flex items-center justify-center rounded-full transition-colors ${
-                            activeSection === item.id 
-                                ? "text-[#1a1a2e] dark:text-white" 
+                            activeSection === item.id
+                                ? "text-[#1a1a2e] dark:text-white"
                                 : "text-[#1a1a2e]/40 hover:text-[#1a1a2e]/80 dark:text-white/40 dark:hover:text-white/80"
                         } px-2.5 py-2 sm:px-3 sm:py-2 md:px-4 md:py-2`}
                     >
@@ -107,7 +112,7 @@ export default function Navigation() {
                         {/* Icon is always visible on mobile; alongside text on sm+ */}
                         <item.icon className="relative z-10 w-4 h-4 sm:mr-2" strokeWidth={1.5} />
                         <span className="relative z-10 hidden sm:inline text-xs md:text-sm font-bold tracking-wide">{item.label}</span>
-                    </button>
+                    </motion.button>
                 ))}
 
                 {/* Divider + Theme Toggle — only visible after scrolling past hero */}
