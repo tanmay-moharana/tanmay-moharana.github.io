@@ -16,7 +16,7 @@ export default function About() {
                         About Me
                     </h2>
                     <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium leading-[1.3] text-[#1a1a2e] dark:text-white mb-10">
-                        A seasoned digital transformation and product development leader with over eight years of experience successfully guiding cross-functional teams from strategy to execution.
+                        A seasoned digital transformation and product development leader with over ten years of experience successfully guiding cross-functional teams from strategy to execution.
                     </p>
                     <p className="text-base sm:text-lg md:text-xl text-[#4a4a5a] dark:text-gray-400 mb-6 md:mb-8 max-w-3xl leading-relaxed">
                         My expertise lies in managing the end-to-end product lifecycle to deliver groundbreaking digital solutions and IoT products, specifically tailored to drive efficiency, innovation, and sustainable growth within the demanding manufacturing sector.
